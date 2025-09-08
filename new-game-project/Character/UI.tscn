@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://4twn3fmspgq4"]
+
+[ext_resource type="Texture2D" uid="uid://big58xxpaykqu" path="res://Sprites/ui/ui-healtbar.png" id="1_6habc"]
+
+[node name="Node" type="Node"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = -240.0
+offset_top = -135.0
+offset_right = -115.0
+offset_bottom = -95.0
+texture = ExtResource("1_6habc")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 115.0
+offset_top = -135.0
+offset_right = 240.0
+offset_bottom = -95.0
+texture = ExtResource("1_6habc")
+flip_h = true

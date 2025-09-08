@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://dj66hbghsx3ks"]
+
+<<<<<<< Updated upstream
+[ext_resource type="Script" uid="uid://da0s87m8nulmj" path="res://Player-Movement.gd" id="1_g83ow"]
+=======
+[ext_resource type="Script" uid="uid://6oopute5k0xd" path="res://Player-Movement.gd" id="1_g83ow"]
+>>>>>>> Stashed changes
+[ext_resource type="Texture2D" uid="uid://c6onrfow7qv1p" path="res://icon.svg" id="2_bnkdj"]
+[ext_resource type="Texture2D" uid="uid://b181scq6csym" path="res://Scener/cat being eaten by fish.jpg" id="2_pf467"]
+[ext_resource type="Script" uid="uid://yaklwe4x0kj8" path="res://Script/state machine.gd" id="4_pf467"]
+[ext_resource type="Script" uid="uid://b7awctgeh21h5" path="res://Script/idle.gd" id="5_oedjp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oedjp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pf467")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bnkdj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g83ow"]
+size = Vector2(127, 129)
+
+[sub_resource type="Animation" id="Animation_g83ow"]
+resource_name = "Idle"
+step = 0.2
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kxaqx"]
+_data = {
+&"Idle": SubResource("Animation_g83ow")
+}
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+script = ExtResource("1_g83ow")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_oedjp")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -1.5)
+shape = SubResource("RectangleShape2D_g83ow")
+
+[node name="StateMachine" type="Node2D" parent="."]
+script = ExtResource("4_pf467")
+metadata/_custom_type_script = "uid://yaklwe4x0kj8"
+
+[node name="Idle" type="Node2D" parent="StateMachine"]
+script = ExtResource("5_oedjp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_kxaqx")
+}

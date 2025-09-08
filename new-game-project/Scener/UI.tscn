@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cy52mhlnhvlsl"]
+
+[node name="Node" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = -240.0
+offset_top = -135.0
+offset_right = -115.0
+offset_bottom = -95.0
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 115.0
+offset_top = -135.0
+offset_right = 240.0
+offset_bottom = -95.0
+flip_h = true
