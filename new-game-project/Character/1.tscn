@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://c0m36g5wplhcc"]
+[gd_scene load_steps=9 format=3 uid="uid://dyilni8peeng"]
 
 [ext_resource type="Texture2D" uid="uid://ck37urubwcwaj" path="res://icon.svg" id="1_ikjy8"]
-[ext_resource type="Script" uid="uid://bpib22bi4koni" path="res://Script/Player_Scirpt.gd" id="1_pf467"]
+[ext_resource type="Script" path="res://Script/Player_Scirpt.gd" id="1_pf467"]
 [ext_resource type="Script" uid="uid://yaklwe4x0kj8" path="res://Script/state machine.gd" id="3_pf467"]
 [ext_resource type="Script" path="res://Script/idle.gd" id="4_pf467"]
 
@@ -28,7 +28,7 @@ _data = {
 &"Idle": SubResource("Animation_oedjp")
 }
 
-[node name="Player" type="CharacterBody2D"]
+[node name="1" type="CharacterBody2D"]
 script = ExtResource("1_pf467")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
