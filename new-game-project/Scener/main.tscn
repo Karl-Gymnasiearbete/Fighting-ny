@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=4 uid="uid://cuojwadspstlr"]
+[gd_scene load_steps=7 format=4 uid="uid://cuojwadspstlr"]
 
 [ext_resource type="Texture2D" uid="uid://duxahvnefx77h" path="res://Sprites/Temporary/1588959089_7c0fc2509ae02f26b34709c8e64617076cfdaba8eaeffadaad33cb5c1fb24b4d.jpg" id="1_pavvm"]
+[ext_resource type="Script" uid="uid://bryt6w5hitof7" path="res://Script/player.gd" id="3_1ayt1"]
 [ext_resource type="PackedScene" uid="uid://cy52mhlnhvlsl" path="res://Scener/UI.tscn" id="3_2ewoc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2ewoc"]
@@ -378,3 +379,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(-351, 36)
+script = ExtResource("3_1ayt1")
+metadata/_custom_type_script = "uid://bryt6w5hitof7"
