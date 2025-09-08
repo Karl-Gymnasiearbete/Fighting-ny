@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://cy52mhlnhvlsl"]
+[gd_scene load_steps=2 format=3 uid="uid://cy52mhlnhvlsl"]
+
+[ext_resource type="Texture2D" uid="uid://big58xxpaykqu" path="res://Sprites/ui/ui-healtbar.png" id="1_2kxbt"]
 
 [node name="Node" type="Control"]
 layout_mode = 3
@@ -11,6 +13,7 @@ offset_left = -240.0
 offset_top = -135.0
 offset_right = -115.0
 offset_bottom = -95.0
+texture = ExtResource("1_2kxbt")
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect2" type="TextureRect" parent="."]
@@ -20,4 +23,5 @@ offset_left = 115.0
 offset_top = -135.0
 offset_right = 240.0
 offset_bottom = -95.0
+texture = ExtResource("1_2kxbt")
 flip_h = true
