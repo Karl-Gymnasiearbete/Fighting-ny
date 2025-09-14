@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c0m36g5wplhcc"]
+[gd_scene load_steps=10 format=3 uid="uid://c0m36g5wplhcc"]
 
-[ext_resource type="Texture2D" uid="uid://ck37urubwcwaj" path="res://icon.svg" id="1_ikjy8"]
 [ext_resource type="Script" uid="uid://bpib22bi4koni" path="res://Script/Player_Scirpt.gd" id="1_pf467"]
+[ext_resource type="Texture2D" uid="uid://d3v3tr1ryh6vc" path="res://Sprites/Temporary/idle.png" id="2_oedjp"]
+[ext_resource type="Texture2D" uid="uid://vaeplvk4fm3s" path="res://Sprites/Temporary/idle 2.png" id="3_g83ow"]
 [ext_resource type="Script" uid="uid://yaklwe4x0kj8" path="res://Script/state machine.gd" id="3_pf467"]
 [ext_resource type="Script" path="res://Script/idle.gd" id="4_pf467"]
 
@@ -9,7 +10,10 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_ikjy8")
+"texture": ExtResource("2_oedjp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_g83ow")
 }],
 "loop": true,
 "name": &"Idle",
@@ -40,15 +44,14 @@ animation = &"Idle"
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_j5gcv")
 
-[node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("starting_state")]
-script = ExtResource("3_pf467")
-starting_state = NodePath("Idle")
-metadata/_custom_type_script = "uid://yaklwe4x0kj8"
-
-[node name="Idle" type="Node2D" parent="StateMachine"]
-script = ExtResource("4_pf467")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Animation" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_g83ow")
 }
+
+[node name="State Machine" type="Node2D" parent="." node_paths=PackedStringArray("starting_state")]
+script = ExtResource("3_pf467")
+starting_state = NodePath("Idle")
+
+[node name="Idle" type="Node2D" parent="State Machine"]
+script = ExtResource("4_pf467")
