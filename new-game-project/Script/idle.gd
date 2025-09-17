@@ -3,7 +3,7 @@ extends PlayerState
 
 func enter() -> void:
 	super()
-	player.animation.play(idle_anim)
+	pass
 
 func exit() -> void:
 	super()
