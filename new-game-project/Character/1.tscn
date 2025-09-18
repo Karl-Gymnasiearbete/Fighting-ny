@@ -1,38 +1,34 @@
-[gd_scene load_steps=8 format=3 uid="uid://c0m36g5wplhcc"]
+[gd_scene load_steps=7 format=3 uid="uid://c0m36g5wplhcc"]
 
-[ext_resource type="Script" uid="uid://bpib22bi4koni" path="res://Script/Player_Scirpt.gd" id="1_pf467"]
-[ext_resource type="Texture2D" uid="uid://d3v3tr1ryh6vc" path="res://Sprites/Temporary/idle.png" id="2_oedjp"]
-[ext_resource type="Texture2D" uid="uid://vaeplvk4fm3s" path="res://Sprites/Temporary/idle 2.png" id="3_g83ow"]
+[ext_resource type="Script" uid="uid://cy0te1um6tu1" path="res://Character/1.gd" id="1_oedjp"]
+[ext_resource type="Texture2D" uid="uid://cob14wjb0xy83" path="res://Sprites/J4ck/J4ck1.png" id="2_pf467"]
 [ext_resource type="Script" uid="uid://yaklwe4x0kj8" path="res://Script/state machine.gd" id="3_pf467"]
 [ext_resource type="Script" path="res://Script/idle.gd" id="4_pf467"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_bnkdj"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_oedjp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_oedjp")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_g83ow")
+"texture": ExtResource("2_pf467")
 }],
 "loop": true,
-"name": &"Idle",
+"name": &"default",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5gcv"]
-size = Vector2(125, 126)
+size = Vector2(29, 77)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 2
-script = ExtResource("1_pf467")
+script = ExtResource("1_oedjp")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_bnkdj")
-animation = &"Idle"
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_oedjp")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 0)
+position = Vector2(-1.5, 2.5)
 shape = SubResource("RectangleShape2D_j5gcv")
 
 [node name="State Machine" type="Node2D" parent="." node_paths=PackedStringArray("starting_state")]
