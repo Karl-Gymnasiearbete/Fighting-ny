@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0m36g5wplhcc"]
+[gd_scene load_steps=8 format=3 uid="uid://c0m36g5wplhcc"]
 
 [ext_resource type="Script" uid="uid://cy0te1um6tu1" path="res://Character/1.gd" id="1_oedjp"]
 [ext_resource type="Texture2D" uid="uid://cob14wjb0xy83" path="res://Sprites/J4ck/J4ck1.png" id="2_pf467"]
 [ext_resource type="Script" uid="uid://yaklwe4x0kj8" path="res://Script/state machine.gd" id="3_pf467"]
 [ext_resource type="Script" path="res://Script/idle.gd" id="4_pf467"]
+[ext_resource type="Script" uid="uid://clghpq6qrmtxf" path="res://Script/walk.gd" id="5_oedjp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oedjp"]
 animations = [{
@@ -35,5 +36,10 @@ shape = SubResource("RectangleShape2D_j5gcv")
 script = ExtResource("3_pf467")
 starting_state = NodePath("Idle")
 
-[node name="Idle" type="Node2D" parent="State Machine"]
+[node name="Idle" type="Node2D" parent="State Machine" node_paths=PackedStringArray("idle_state", "walk_state")]
 script = ExtResource("4_pf467")
+idle_state = NodePath(".")
+walk_state = NodePath("../Walk")
+
+[node name="Walk" type="Node2D" parent="State Machine"]
+script = ExtResource("5_oedjp")

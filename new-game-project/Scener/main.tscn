@@ -343,6 +343,7 @@ size = Vector2(1005, 62)
 position = Vector2(-206, -114)
 
 [node name="Player" parent="." instance=ExtResource("3_1ayt1")]
+collision_mask = 1
 
 [node name="Foreground" type="TileMapLayer" parent="."]
 position = Vector2(-351, 36)

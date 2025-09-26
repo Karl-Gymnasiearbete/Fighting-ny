@@ -2,9 +2,9 @@ class_name PlayerIdleState
 extends PlayerState
 
 func enter() -> void:
-	super()
 	pass
 
-func exit() -> void:
-	super()
-	pass
+func process_input(event: InputEvent) -> State:
+	super(event)
+	if event.is_action_pressed(movement_key) : return walk_state
+	return null
