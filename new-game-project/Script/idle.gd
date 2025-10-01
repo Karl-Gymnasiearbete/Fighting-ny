@@ -2,7 +2,7 @@ class_name PlayerIdleState
 extends PlayerState
 
 func enter() -> void:
-	player.animation.play(idle_anim)
+	player.animation.play("Idle")
 
 func process_input(event: InputEvent) -> State:
 	super(event)
