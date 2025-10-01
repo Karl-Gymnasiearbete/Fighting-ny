@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://6et3xlv6y4mp"]
+[gd_scene load_steps=6 format=3 uid="uid://6et3xlv6y4mp"]
 
 [ext_resource type="Texture2D" uid="uid://dnqa5iuw51jme" path="res://Sprites/steve/steve.png" id="1_45yjn"]
 [ext_resource type="Script" uid="uid://cbp4xqdk20c32" path="res://Character/StateMachin.gd" id="2_jx7ui"]
 [ext_resource type="Script" uid="uid://d01avwyfgjr7i" path="res://Script/ScriptTest/IdleState.gd" id="3_g5n58"]
+[ext_resource type="Script" uid="uid://be2yg32kjdst4" path="res://Script/ScriptTest/walk.gd" id="4_g5n58"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8l7g6"]
 size = Vector2(37, 76)
@@ -19,9 +20,15 @@ shape = SubResource("RectangleShape2D_8l7g6")
 texture_filter = 1
 texture = ExtResource("1_45yjn")
 
-[node name="StateMachine" type="Node" parent="CharacterBody2D"]
+[node name="StateMachine" type="Node" parent="CharacterBody2D" node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_jx7ui")
+initial_state = NodePath("walk")
 
-[node name="idle" type="Node" parent="CharacterBody2D/StateMachine"]
+[node name="idle" type="Node" parent="CharacterBody2D/StateMachine" node_paths=PackedStringArray("Steve")]
 script = ExtResource("3_g5n58")
+Steve = NodePath("../..")
 metadata/_custom_type_script = "uid://d01avwyfgjr7i"
+
+[node name="walk" type="Node" parent="CharacterBody2D/StateMachine" node_paths=PackedStringArray("Steve")]
+script = ExtResource("4_g5n58")
+Steve = NodePath("../..")

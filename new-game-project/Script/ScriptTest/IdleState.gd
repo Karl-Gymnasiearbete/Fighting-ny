@@ -1,18 +1,18 @@
-extends state
-class_name idle
+extends State
 
-@export var enemy: CharacterBody2D
+@export var Steve: CharacterBody2D
+var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-var player : CharacterBody2D
+func Physics_Update(delta: float) -> void:
+	var input_vector := Input.get_vector("left", "right", "up", "down")
 
-var move_direction : Vector2
-var wander_time : float
+	if input_vector != Vector2.ZERO:
+		Transitioned.emit(self, "Walk")
+	
+	# Apply gravity if Steve is not on the floor
+	if not Steve.is_on_floor():
+		Steve.velocity.y += gravity * delta
+	else:
+		Steve.velocity.y = 0  # optional, keeps him grounded
 
-func enter():
-	player = get_tree().get_first_node_in_group("player")
-
-func _Physics_Update():
-	var direction = player.global_position - enemy. global_position
-
-if :
-	Transitioned.emit(self, walk)
+	Steve.move_and_slide()
