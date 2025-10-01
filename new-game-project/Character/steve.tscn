@@ -1,17 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://6et3xlv6y4mp"]
+[gd_scene load_steps=5 format=3 uid="uid://6et3xlv6y4mp"]
 
 [ext_resource type="Texture2D" uid="uid://dnqa5iuw51jme" path="res://Sprites/steve/steve.png" id="1_45yjn"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_8myrv"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_45yjn")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="Script" uid="uid://cbp4xqdk20c32" path="res://Character/StateMachin.gd" id="2_jx7ui"]
+[ext_resource type="Script" uid="uid://d01avwyfgjr7i" path="res://Script/ScriptTest/IdleState.gd" id="3_g5n58"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8l7g6"]
 size = Vector2(37, 76)
@@ -20,10 +11,17 @@ size = Vector2(37, 76)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_8myrv")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(-6.5, -1)
 shape = SubResource("RectangleShape2D_8l7g6")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture_filter = 1
+texture = ExtResource("1_45yjn")
+
+[node name="StateMachine" type="Node" parent="CharacterBody2D"]
+script = ExtResource("2_jx7ui")
+
+[node name="idle" type="Node" parent="CharacterBody2D/StateMachine"]
+script = ExtResource("3_g5n58")
+metadata/_custom_type_script = "uid://d01avwyfgjr7i"
