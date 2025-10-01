@@ -14,5 +14,5 @@ func enter():
 func _Physics_Update():
 	var direction = player.global_position - enemy. global_position
 
-if input("left"):
+if :
 	Transitioned.emit(self, walk)
