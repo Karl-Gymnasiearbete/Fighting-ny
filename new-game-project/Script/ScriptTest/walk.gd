@@ -1,6 +1,7 @@
 extends State
 
 @export var Steve: CharacterBody2D
+var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @export var speed := 400
 
@@ -13,4 +14,6 @@ func Physics_Update(delta: float) -> void:
 		Steve.velocity = direction * speed
 		Steve.move_and_slide()
 	if Steve.is_on_floor():
-		Steve.velocity.y 
+		Steve.velocity.y = 0
+	else:
+		Steve.velocity.y += gravity * delta 
