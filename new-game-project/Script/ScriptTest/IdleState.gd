@@ -8,11 +8,11 @@ func Physics_Update(delta: float) -> void:
 
 	if input_vector != Vector2.ZERO:
 		Transitioned.emit(self, "Walk")
-	
-	# Apply gravity if Steve is not on the floor
+
+	# Gravity
 	if not Steve.is_on_floor():
 		Steve.velocity.y += gravity * delta
 	else:
-		Steve.velocity.y = 0  # optional, keeps him grounded
+		Steve.velocity.y = 0
 
 	Steve.move_and_slide()
