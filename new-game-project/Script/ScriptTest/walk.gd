@@ -1,24 +1,26 @@
 extends State
 
 @export var Steve: CharacterBody2D
-var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
+var gravity: float = float(ProjectSettings.get_setting("physics/2d/default_gravity"))
 @export var speed := 400
 
 func Physics_Update(delta: float) -> void:
-	var direction := Input.get_vector("left", "right", "", "")
+	var dir_x := Input.get_axis("left", "right")
 
-	if direction == Vector2.ZERO:
-		# Stop moving when no input
+	# Jump input
+	if Input.is_action_just_pressed("jump") and Steve.is_on_floor():
+		Transitioned.emit(self, "Jump")
+		return
+
+	# Idle transition
+	if dir_x == 0:
 		Steve.velocity.x = 0
 		Transitioned.emit(self, "Idle")
 	else:
-		# Update horizontal movement
-		Steve.velocity.x = direction.x * speed
+		Steve.velocity.x = dir_x * speed
 
-	# Gravity (always applied)
+	# Gravity
 	if not Steve.is_on_floor():
 		Steve.velocity.y += gravity * delta
-	else:
-		Steve.velocity.y = 0
 
 	Steve.move_and_slide()
