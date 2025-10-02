@@ -370,12 +370,12 @@ position = Vector2(-351, 36)
 position = Vector2(216.5, 288)
 shape = SubResource("RectangleShape2D_pavvm")
 
-[node name="Node" parent="." instance=ExtResource("3_1ayt1")]
+[node name="Steve" parent="." instance=ExtResource("3_1ayt1")]
 
-[node name="Camera2D" type="Camera2D" parent="Node"]
-position = Vector2(41, -54)
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(247, 60)
 
-[node name="Node" parent="Node/Camera2D" instance=ExtResource("3_2ewoc")]
+[node name="Node" parent="Camera2D" instance=ExtResource("3_2ewoc")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
