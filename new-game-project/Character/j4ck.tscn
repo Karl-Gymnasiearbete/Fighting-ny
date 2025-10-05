@@ -66,6 +66,7 @@ initial_state = NodePath("idle")
 [node name="walk" type="Node" parent="State Machine" node_paths=PackedStringArray("Steve")]
 script = ExtResource("8_0i4u0")
 Steve = NodePath("../../J4ck")
+speed = 300
 
 [node name="idle" type="Node" parent="State Machine" node_paths=PackedStringArray("Steve")]
 script = ExtResource("9_8unil")
@@ -74,3 +75,4 @@ Steve = NodePath("../../J4ck")
 [node name="jump" type="Node" parent="State Machine" node_paths=PackedStringArray("Steve")]
 script = ExtResource("10_1biw4")
 Steve = NodePath("../../J4ck")
+air_speed = 300

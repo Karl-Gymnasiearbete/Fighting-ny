@@ -34,7 +34,9 @@ metadata/_custom_type_script = "uid://d01avwyfgjr7i"
 [node name="walk" type="Node" parent="CharacterBody2D/StateMachine" node_paths=PackedStringArray("Steve")]
 script = ExtResource("4_g5n58")
 Steve = NodePath("../..")
+speed = 300
 
 [node name="jump" type="Node" parent="CharacterBody2D/StateMachine" node_paths=PackedStringArray("Steve")]
 script = ExtResource("5_fsb3l")
 Steve = NodePath("../..")
+air_speed = 300

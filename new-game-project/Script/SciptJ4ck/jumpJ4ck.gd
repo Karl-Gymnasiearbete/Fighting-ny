@@ -2,7 +2,7 @@ extends State
 
 @export var Steve: CharacterBody2D
 var gravity: float = float(ProjectSettings.get_setting("physics/2d/default_gravity"))
-@export var jump_force := 900
+@export var jump_force := 450
 @export var air_speed := 400
 
 func enter() -> void:
