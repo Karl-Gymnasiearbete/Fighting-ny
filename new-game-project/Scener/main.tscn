@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://cuojwadspstlr"]
+[gd_scene load_steps=8 format=4 uid="uid://cuojwadspstlr"]
 
 [ext_resource type="Texture2D" uid="uid://duxahvnefx77h" path="res://Sprites/Temporary/1588959089_7c0fc2509ae02f26b34709c8e64617076cfdaba8eaeffadaad33cb5c1fb24b4d.jpg" id="1_pavvm"]
 [ext_resource type="PackedScene" uid="uid://6et3xlv6y4mp" path="res://Character/steve.tscn" id="3_1ayt1"]
 [ext_resource type="PackedScene" uid="uid://cy52mhlnhvlsl" path="res://Scener/UI.tscn" id="3_2ewoc"]
+[ext_resource type="PackedScene" uid="uid://c0m36g5wplhcc" path="res://Character/j4ck.tscn" id="4_1ayt1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2ewoc"]
 texture = ExtResource("1_pavvm")
@@ -381,3 +382,5 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="J4ck" parent="." instance=ExtResource("4_1ayt1")]

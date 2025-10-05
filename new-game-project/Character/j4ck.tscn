@@ -1,14 +1,17 @@
 [gd_scene load_steps=13 format=3 uid="uid://c0m36g5wplhcc"]
 
-[ext_resource type="Script" uid="uid://n4a607usm8v7" path="res://Character/basic movement.gd" id="1_gmptl"]
 [ext_resource type="Texture2D" uid="uid://cob14wjb0xy83" path="res://Sprites/J4ck/J4ck1.png" id="2_pf467"]
 [ext_resource type="Texture2D" uid="uid://vaeplvk4fm3s" path="res://Sprites/Temporary/idle 2.png" id="3_kxaqx"]
 [ext_resource type="Texture2D" uid="uid://d3v3tr1ryh6vc" path="res://Sprites/Temporary/idle.png" id="4_hpyvb"]
 [ext_resource type="Texture2D" uid="uid://071dko2olu2n" path="res://Sprites/Temporary/walk.png" id="5_wejqx"]
 [ext_resource type="Texture2D" uid="uid://d3sjeorfw1hyk" path="res://Sprites/Temporary/walk 2.png" id="6_e0aup"]
+[ext_resource type="Script" uid="uid://cbp4xqdk20c32" path="res://Character/StateMachin.gd" id="7_gmptl"]
 [ext_resource type="Texture2D" uid="uid://dj2vrt2ypvl23" path="res://Sprites/Temporary/walk 3.png" id="7_maatv"]
+[ext_resource type="Script" uid="uid://be2yg32kjdst4" path="res://Script/ScriptTest/walk.gd" id="8_0i4u0"]
+[ext_resource type="Script" uid="uid://d01avwyfgjr7i" path="res://Script/ScriptTest/IdleState.gd" id="9_8unil"]
+[ext_resource type="Script" uid="uid://7hkym4he41p0" path="res://jump.gd" id="10_1biw4"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_oedjp"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_44bxf"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -39,93 +42,34 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_j5gcv"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkale"]
 size = Vector2(29, 77)
 
-[sub_resource type="Animation" id="Animation_8oo57"]
-resource_name = "Idle"
-loop_mode = 1
-step = 0.333333
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Idle"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.333333, 0.666666),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 2]
-}
+[node name="J4ck" type="Node2D"]
 
-[sub_resource type="Animation" id="Animation_wejqx"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Idle"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
+[node name="J4ck" type="CharacterBody2D" parent="."]
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_e0aup"]
-_data = {
-&"Idle": SubResource("Animation_8oo57"),
-&"RESET": SubResource("Animation_wejqx")
-}
-
-[node name="Player" type="CharacterBody2D"]
-collision_mask = 2
-script = ExtResource("1_gmptl")
-
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="J4ck"]
 texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_oedjp")
+sprite_frames = SubResource("SpriteFrames_44bxf")
 animation = &"Idle"
 
-[node name="Collision" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="J4ck"]
 position = Vector2(-1.5, 2.5)
-shape = SubResource("RectangleShape2D_j5gcv")
+shape = SubResource("RectangleShape2D_nkale")
 
-[node name="Animation" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_e0aup")
-}
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("7_gmptl")
+initial_state = NodePath("idle")
 
-[node name="State Machine" type="Node2D" parent="."]
+[node name="walk" type="Node" parent="State Machine" node_paths=PackedStringArray("Steve")]
+script = ExtResource("8_0i4u0")
+Steve = NodePath("../../J4ck")
 
-[node name="Idle" type="Node2D" parent="State Machine"]
+[node name="idle" type="Node" parent="State Machine" node_paths=PackedStringArray("Steve")]
+script = ExtResource("9_8unil")
+Steve = NodePath("../../J4ck")
 
-[node name="Walk" type="Node2D" parent="State Machine"]
-
-[node name="Node" type="Node" parent="."]
+[node name="jump" type="Node" parent="State Machine" node_paths=PackedStringArray("Steve")]
+script = ExtResource("10_1biw4")
+Steve = NodePath("../../J4ck")
