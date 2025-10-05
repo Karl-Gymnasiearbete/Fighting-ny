@@ -42,8 +42,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkale"]
-size = Vector2(29, 77)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gmptl"]
+radius = 13.0
+height = 80.0
 
 [node name="J4ck" type="Node2D"]
 
@@ -55,8 +56,8 @@ sprite_frames = SubResource("SpriteFrames_44bxf")
 animation = &"Idle"
 
 [node name="Collision" type="CollisionShape2D" parent="J4ck"]
-position = Vector2(-1.5, 2.5)
-shape = SubResource("RectangleShape2D_nkale")
+position = Vector2(-2, 0)
+shape = SubResource("CapsuleShape2D_gmptl")
 
 [node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("7_gmptl")
