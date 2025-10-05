@@ -6,8 +6,8 @@ var gravity: float = float(ProjectSettings.get_setting("physics/2d/default_gravi
 @export var air_speed := 400
 
 func enter() -> void:
+	print("Entered jump")
 	Steve.velocity.y = -jump_force
-	print("Entered Jump State")
 
 func Physics_Update(delta: float) -> void:
 	var dir_x := Input.get_axis("left", "right")
@@ -18,11 +18,12 @@ func Physics_Update(delta: float) -> void:
 	# Gravity
 	Steve.velocity.y += gravity * delta
 
+	# Apply motion
 	Steve.move_and_slide()
 
 	# Landing check
 	if Steve.is_on_floor():
 		if dir_x == 0:
-			Transitioned.emit(self, "Idle")
+			Transitioned.emit(self, "idle")
 		else:
-			Transitioned.emit(self, "Walk")
+			Transitioned.emit(self, "walk")
