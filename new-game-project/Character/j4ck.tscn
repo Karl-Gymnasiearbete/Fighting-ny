@@ -5,11 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://d3v3tr1ryh6vc" path="res://Sprites/Temporary/idle.png" id="4_hpyvb"]
 [ext_resource type="Texture2D" uid="uid://071dko2olu2n" path="res://Sprites/Temporary/walk.png" id="5_wejqx"]
 [ext_resource type="Texture2D" uid="uid://d3sjeorfw1hyk" path="res://Sprites/Temporary/walk 2.png" id="6_e0aup"]
-[ext_resource type="Script" uid="uid://cbp4xqdk20c32" path="res://Character/StateMachin.gd" id="7_gmptl"]
+[ext_resource type="Script" uid="uid://c0yfetlwjkdw1" path="res://Script/SciptJ4ck/StateMachineJ4ck.gd" id="7_gmptl"]
 [ext_resource type="Texture2D" uid="uid://dj2vrt2ypvl23" path="res://Sprites/Temporary/walk 3.png" id="7_maatv"]
-[ext_resource type="Script" uid="uid://be2yg32kjdst4" path="res://Script/ScriptTest/walk.gd" id="8_0i4u0"]
-[ext_resource type="Script" uid="uid://d01avwyfgjr7i" path="res://Script/ScriptTest/IdleState.gd" id="9_8unil"]
-[ext_resource type="Script" uid="uid://7hkym4he41p0" path="res://jump.gd" id="10_1biw4"]
+[ext_resource type="Script" uid="uid://ci8sna3jllune" path="res://Script/SciptJ4ck/walkJ4ck.gd" id="8_0i4u0"]
+[ext_resource type="Script" uid="uid://dmxfxr0cbqsy7" path="res://Script/SciptJ4ck/IdleStateJ4ck.gd" id="9_8unil"]
+[ext_resource type="Script" uid="uid://dtuesrbjnx851" path="res://Script/SciptJ4ck/jumpJ4ck.gd" id="10_1biw4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_44bxf"]
 animations = [{
