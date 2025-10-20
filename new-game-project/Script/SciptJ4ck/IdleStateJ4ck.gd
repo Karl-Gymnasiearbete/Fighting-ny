@@ -9,6 +9,9 @@ func enter() -> void:
 
 func Physics_Update(delta: float) -> void:
 	var dir_x := Input.get_axis("leftArrow", "rightArrow")
+	
+	if not is_instance_valid(Steve) or Steve.dead:
+		return #Stops processing if Steve is gone or deda
 
 	# Jump input
 	if Input.is_action_just_pressed("jumpArrow") and Steve.is_on_floor():
@@ -23,5 +26,6 @@ func Physics_Update(delta: float) -> void:
 	# Gravity
 	if not Steve.is_on_floor():
 		Steve.velocity.y += gravity * delta
+	
 
 	Steve.move_and_slide()

@@ -1,6 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://c0m36g5wplhcc"]
+[gd_scene load_steps=22 format=3 uid="uid://c0m36g5wplhcc"]
 
+[ext_resource type="Script" uid="uid://d3nvijr0t0s66" path="res://health_Test.gd" id="1_a0t0p"]
 [ext_resource type="Texture2D" uid="uid://cotwdhabtdfwy" path="res://Sprites/J4ck/gymnasie-arbete-character1.png" id="1_jfbpb"]
+[ext_resource type="Script" uid="uid://cwsp3sixy33op" path="res://Character/health_component.gd" id="6_6kfj8"]
 [ext_resource type="Script" uid="uid://c0yfetlwjkdw1" path="res://Script/SciptJ4ck/StateMachineJ4ck.gd" id="7_gmptl"]
 [ext_resource type="Script" uid="uid://ci8sna3jllune" path="res://Script/SciptJ4ck/walkJ4ck.gd" id="8_0i4u0"]
 [ext_resource type="Script" uid="uid://dmxfxr0cbqsy7" path="res://Script/SciptJ4ck/IdleStateJ4ck.gd" id="9_8unil"]
@@ -110,6 +112,7 @@ height = 80.0
 [node name="J4ck" type="Node2D"]
 
 [node name="J4ck" type="CharacterBody2D" parent="."]
+script = ExtResource("1_a0t0p")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="J4ck"]
 texture_filter = 1
@@ -121,6 +124,17 @@ frame_progress = 0.729211
 [node name="Collision" type="CollisionShape2D" parent="J4ck"]
 position = Vector2(-2, 0)
 shape = SubResource("CapsuleShape2D_gmptl")
+
+[node name="HealthComponent" type="Node2D" parent="J4ck"]
+script = ExtResource("6_6kfj8")
+
+[node name="Label" type="Label" parent="J4ck"]
+offset_left = -25.0
+offset_top = -66.0
+offset_right = 23.0
+offset_bottom = -43.0
+text = "100hp"
+horizontal_alignment = 1
 
 [node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("7_gmptl")

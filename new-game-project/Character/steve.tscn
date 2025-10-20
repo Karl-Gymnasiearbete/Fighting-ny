@@ -10,7 +10,7 @@
 radius = 16.0
 height = 76.0
 
-[node name="Steve" type="Node"]
+[node name="Steve" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 
