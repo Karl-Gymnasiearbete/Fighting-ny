@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=4 uid="uid://cuojwadspstlr"]
 
 [ext_resource type="Texture2D" uid="uid://duxahvnefx77h" path="res://Sprites/Temporary/1588959089_7c0fc2509ae02f26b34709c8e64617076cfdaba8eaeffadaad33cb5c1fb24b4d.jpg" id="1_pavvm"]
-[ext_resource type="PackedScene" uid="uid://6et3xlv6y4mp" path="res://Character/steve.tscn" id="3_1ayt1"]
+[ext_resource type="PackedScene" uid="uid://6et3xlv6y4mp" path="res://Character/st3ve.tscn" id="3_1ayt1"]
 [ext_resource type="PackedScene" uid="uid://cy52mhlnhvlsl" path="res://Scener/UI.tscn" id="3_2ewoc"]
 [ext_resource type="PackedScene" uid="uid://c0m36g5wplhcc" path="res://Character/j4ck.tscn" id="4_1ayt1"]
 
@@ -371,7 +371,7 @@ position = Vector2(-351, 36)
 position = Vector2(216.5, 288)
 shape = SubResource("RectangleShape2D_pavvm")
 
-[node name="Steve" parent="." instance=ExtResource("3_1ayt1")]
+[node name="St3ve" parent="." instance=ExtResource("3_1ayt1")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(247, 60)

@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://6et3xlv6y4mp"]
 
 [ext_resource type="Texture2D" uid="uid://dnqa5iuw51jme" path="res://Sprites/steve/steve.png" id="1_45yjn"]
-[ext_resource type="Script" uid="uid://cla57k3yghlt" path="res://Script/ScriptSteve/damage_&_deathsteve.gd" id="1_60an2"]
-[ext_resource type="Script" uid="uid://cbp4xqdk20c32" path="res://Script/ScriptSteve/StateMachinSteve.gd" id="2_jx7ui"]
-[ext_resource type="Script" uid="uid://cwsp3sixy33op" path="res://Script/SciptJ4ck/health_componentj4ck.gd" id="2_qckkr"]
-[ext_resource type="Script" uid="uid://d01avwyfgjr7i" path="res://Script/ScriptSteve/IdleStateSteve.gd" id="3_g5n58"]
-[ext_resource type="Script" uid="uid://be2yg32kjdst4" path="res://Script/ScriptSteve/walkSteve.gd" id="4_g5n58"]
-[ext_resource type="Script" uid="uid://7hkym4he41p0" path="res://Script/ScriptSteve/jumpSteve.gd" id="5_fsb3l"]
+[ext_resource type="Script" uid="uid://cla57k3yghlt" path="res://Script/ScriptSteve/damage_&_deathSt3ve.gd" id="1_60an2"]
+[ext_resource type="Script" uid="uid://cbp4xqdk20c32" path="res://Script/ScriptSteve/StateMachinSt3ve.gd" id="2_jx7ui"]
+[ext_resource type="Script" uid="uid://bchyxfmd04fx6" path="res://Script/ScriptSteve/health_componentSt3ve.gd" id="3_26rlh"]
+[ext_resource type="Script" uid="uid://d01avwyfgjr7i" path="res://Script/ScriptSteve/IdleStateSt3ve.gd" id="3_g5n58"]
+[ext_resource type="Script" uid="uid://be2yg32kjdst4" path="res://Script/ScriptSteve/walkSt3ve.gd" id="4_g5n58"]
+[ext_resource type="Script" uid="uid://7hkym4he41p0" path="res://Script/ScriptSteve/jumpSt3ve.gd" id="5_fsb3l"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fsb3l"]
 radius = 16.0
@@ -14,21 +14,21 @@ height = 76.0
 
 [node name="Steve" type="Node2D"]
 
-[node name="Steve" type="CharacterBody2D" parent="."]
+[node name="St3ve" type="CharacterBody2D" parent="."]
 script = ExtResource("1_60an2")
 
-[node name="Sprite2D" type="Sprite2D" parent="Steve"]
+[node name="Sprite2D" type="Sprite2D" parent="St3ve"]
 texture_filter = 1
 texture = ExtResource("1_45yjn")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Steve"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="St3ve"]
 position = Vector2(-5, 0)
 shape = SubResource("CapsuleShape2D_fsb3l")
 
-[node name="HealthComponent" type="Node2D" parent="Steve"]
-script = ExtResource("2_qckkr")
+[node name="HealthComponent" type="Node2D" parent="St3ve"]
+script = ExtResource("3_26rlh")
 
-[node name="Label" type="Label" parent="Steve"]
+[node name="Label" type="Label" parent="St3ve"]
 offset_left = -25.0
 offset_top = -66.0
 offset_right = 23.0
@@ -42,15 +42,15 @@ initial_state = NodePath("walk")
 
 [node name="idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("Steve")]
 script = ExtResource("3_g5n58")
-Steve = NodePath("../../Steve")
+Steve = NodePath("../../St3ve")
 metadata/_custom_type_script = "uid://d01avwyfgjr7i"
 
 [node name="walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("Steve")]
 script = ExtResource("4_g5n58")
-Steve = NodePath("../../Steve")
+Steve = NodePath("../../St3ve")
 speed = 300
 
 [node name="jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("Steve")]
 script = ExtResource("5_fsb3l")
-Steve = NodePath("../../Steve")
+Steve = NodePath("../../St3ve")
 air_speed = 300
