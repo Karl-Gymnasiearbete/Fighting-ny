@@ -384,4 +384,4 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="J4ck" parent="." instance=ExtResource("4_1ayt1")]
-position = Vector2(-106, -4)
+position = Vector2(106, 2)

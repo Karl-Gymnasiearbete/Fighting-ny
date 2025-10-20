@@ -9,6 +9,9 @@ func enter() -> void:
 
 func Physics_Update(delta: float) -> void:
 	var dir_x := Input.get_axis("left", "right")
+	
+	if not is_instance_valid(Steve) or Steve.dead:
+		return #Stops processing if Steve is gone or deda
 
 	# Jump input
 	if Input.is_action_just_pressed("jump") and Steve.is_on_floor():

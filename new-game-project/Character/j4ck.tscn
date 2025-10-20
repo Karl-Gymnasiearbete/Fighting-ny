@@ -1,8 +1,8 @@
 [gd_scene load_steps=22 format=3 uid="uid://c0m36g5wplhcc"]
 
-[ext_resource type="Script" uid="uid://d3nvijr0t0s66" path="res://health_Test.gd" id="1_a0t0p"]
+[ext_resource type="Script" uid="uid://d3nvijr0t0s66" path="res://Script/SciptJ4ck/damage_&_deathj4ck.gd" id="1_a0t0p"]
 [ext_resource type="Texture2D" uid="uid://cotwdhabtdfwy" path="res://Sprites/J4ck/gymnasie-arbete-character1.png" id="1_jfbpb"]
-[ext_resource type="Script" uid="uid://cwsp3sixy33op" path="res://Character/health_component.gd" id="6_6kfj8"]
+[ext_resource type="Script" uid="uid://cwsp3sixy33op" path="res://Script/SciptJ4ck/health_componentj4ck.gd" id="6_6kfj8"]
 [ext_resource type="Script" uid="uid://c0yfetlwjkdw1" path="res://Script/SciptJ4ck/StateMachineJ4ck.gd" id="7_gmptl"]
 [ext_resource type="Script" uid="uid://ci8sna3jllune" path="res://Script/SciptJ4ck/walkJ4ck.gd" id="8_0i4u0"]
 [ext_resource type="Script" uid="uid://dmxfxr0cbqsy7" path="res://Script/SciptJ4ck/IdleStateJ4ck.gd" id="9_8unil"]
