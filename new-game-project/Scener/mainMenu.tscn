@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://7iyovaqaeh2o"]
+
+[ext_resource type="Script" uid="uid://dosr1u4udgcys" path="res://Script/managers/main_menu.gd" id="1_tjgco"]
+[ext_resource type="Texture2D" uid="uid://b181scq6csym" path="res://Scener/cat being eaten by fish.jpg" id="2_mrd0r"]
+
+[node name="MainMenu" type="Node"]
+script = ExtResource("1_tjgco")
+
+[node name="background" type="TextureRect" parent="."]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.5
+offset_top = -324.5
+offset_right = 576.5
+offset_bottom = 324.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_mrd0r")
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -67.0
+offset_top = 61.0
+offset_right = 67.0
+offset_bottom = 145.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
