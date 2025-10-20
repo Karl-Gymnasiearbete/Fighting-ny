@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=4 uid="uid://cuojwadspstlr"]
 
-[ext_resource type="Texture2D" uid="uid://duxahvnefx77h" path="res://Sprites/Temporary/1588959089_7c0fc2509ae02f26b34709c8e64617076cfdaba8eaeffadaad33cb5c1fb24b4d.jpg" id="1_pavvm"]
-[ext_resource type="PackedScene" uid="uid://6et3xlv6y4mp" path="res://Character/st3ve.tscn" id="3_1ayt1"]
-[ext_resource type="PackedScene" uid="uid://c0m36g5wplhcc" path="res://Character/j4ck.tscn" id="4_1ayt1"]
+[ext_resource type="Texture2D" uid="uid://duxahvnefx77h" path="res://Sprites/Temporary/1588959089_7c0fc2509ae02f26b34709c8e64617076cfdaba8eaeffadaad33cb5c1fb24b4d.jpg" id="1_q4r3q"]
+[ext_resource type="PackedScene" uid="uid://6et3xlv6y4mp" path="res://Character/st3ve.tscn" id="2_485bs"]
+[ext_resource type="PackedScene" uid="uid://c0m36g5wplhcc" path="res://Character/j4ck.tscn" id="3_fvi5k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2ewoc"]
-texture = ExtResource("1_pavvm")
+texture = ExtResource("1_q4r3q")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -370,10 +370,10 @@ position = Vector2(-351, 36)
 position = Vector2(216.5, 288)
 shape = SubResource("RectangleShape2D_pavvm")
 
-[node name="St3ve" parent="." instance=ExtResource("3_1ayt1")]
+[node name="St3ve" parent="." instance=ExtResource("2_485bs")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(247, 60)
 
-[node name="J4ck" parent="." instance=ExtResource("4_1ayt1")]
+[node name="J4ck" parent="." instance=ExtResource("3_fvi5k")]
 position = Vector2(106, 2)

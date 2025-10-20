@@ -2,4 +2,4 @@ extends Node
 
 
 func _on_button_pressed():
-	get_tree().change_scene_to_file("res://Scener/main.tscn")
+	get_tree().change_scene_to_file("res://Scener/Arena/main.tscn")
