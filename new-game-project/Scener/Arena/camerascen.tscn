@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://drvita4iyjsc7"]
+[gd_scene load_steps=4 format=3 uid="uid://drvita4iyjsc7"]
 
+[ext_resource type="Script" uid="uid://b5b21vawud6wc" path="res://Scener/Arena/camera_2d.gd" id="1_d5p8q"]
 [ext_resource type="Texture2D" uid="uid://u33d2o01y5uj" path="res://Sprites/ui/ui-healtbar.png" id="1_n6gwh"]
 [ext_resource type="Texture2D" uid="uid://brdpaip73i8s7" path="res://Sprites/ui/iconsgymn.png" id="2_55fwh"]
 
@@ -7,6 +8,7 @@
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.75, 1.75)
+script = ExtResource("1_d5p8q")
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera2D"]
 texture_filter = 1
@@ -15,7 +17,7 @@ texture = ExtResource("1_n6gwh")
 region_enabled = true
 region_rect = Rect2(0, 0, 205, 40)
 
-[node name="Sprite2D" type="Sprite2D" parent="Camera2D/Sprite2D"]
+[node name="iconp1" type="Sprite2D" parent="Camera2D/Sprite2D"]
 position = Vector2(-84.5, -2.5)
 texture = ExtResource("2_55fwh")
 region_enabled = true
@@ -29,7 +31,7 @@ flip_h = true
 region_enabled = true
 region_rect = Rect2(0, 0, 205, 40)
 
-[node name="Sprite2D" type="Sprite2D" parent="Camera2D/Sprite2D2"]
+[node name="iconp2" type="Sprite2D" parent="Camera2D/Sprite2D2"]
 position = Vector2(84.5, -1.5)
 texture = ExtResource("2_55fwh")
 flip_h = true
