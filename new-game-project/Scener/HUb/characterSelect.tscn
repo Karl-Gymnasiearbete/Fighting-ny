@@ -42,6 +42,13 @@ texture = ExtResource("2_vn1yo")
 region_enabled = true
 region_rect = Rect2(32, 0, 32, 32)
 
+[node name="Label" type="Label" parent="J4ck"]
+offset_left = 43.0
+offset_top = 129.0
+offset_right = 86.0
+offset_bottom = 152.0
+text = " J4ck"
+
 [node name="Steve" type="Button" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
@@ -62,6 +69,14 @@ scale = Vector2(4.09375, 3.9375)
 texture = ExtResource("2_vn1yo")
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 32)
+
+[node name="Label" type="Label" parent="Steve"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 129.0
+offset_right = 86.0
+offset_bottom = 152.0
+text = "St3ve"
 
 [connection signal="pressed" from="J4ck" to="." method="_on_j_4_ck_pressed"]
 [connection signal="pressed" from="Steve" to="." method="_on_steve_pressed"]
