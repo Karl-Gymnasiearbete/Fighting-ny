@@ -16,7 +16,7 @@ func _on_j4ck_selected():
 		current_player = 2
 		update_prompt()
 	else:
-		Global.p2_character = "St3ve"
+		Global.p2_character = "J4ck"
 		_start_game()
 
 func _on_st3ve_selected():
@@ -25,7 +25,7 @@ func _on_st3ve_selected():
 		current_player = 2
 		update_prompt()
 	else:
-		Global.p2_character = "J4ck"
+		Global.p2_character = "St3ve"
 		_start_game()
 
 func _start_game():
