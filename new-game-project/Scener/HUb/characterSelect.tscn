@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dl8decfml41wh"]
+[gd_scene load_steps=4 format=3 uid="uid://dl8decfml41wh"]
 
 [ext_resource type="Texture2D" uid="uid://b181scq6csym" path="res://Scener/cat being eaten by fish.jpg" id="1_70gr8"]
+[ext_resource type="Script" uid="uid://brj06qc6wvrp5" path="res://Script/managers/character_select.gd" id="1_vn1yo"]
 [ext_resource type="Texture2D" uid="uid://brdpaip73i8s7" path="res://Sprites/ui/iconsgymn.png" id="2_vn1yo"]
 
 [node name="CharacterSelect" type="Node"]
+script = ExtResource("1_vn1yo")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 8
@@ -60,3 +62,6 @@ scale = Vector2(4.09375, 3.9375)
 texture = ExtResource("2_vn1yo")
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 32)
+
+[connection signal="pressed" from="J4ck" to="." method="_on_j_4_ck_pressed"]
+[connection signal="pressed" from="Steve" to="." method="_on_steve_pressed"]

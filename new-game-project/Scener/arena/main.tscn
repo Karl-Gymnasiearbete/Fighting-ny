@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=4 uid="uid://cuojwadspstlr"]
+[gd_scene load_steps=6 format=4 uid="uid://cuojwadspstlr"]
 
+[ext_resource type="Script" uid="uid://ch3odhxojpnfj" path="res://Scener/Arena/main.gd" id="1_bi5fm"]
 [ext_resource type="Texture2D" uid="uid://duxahvnefx77h" path="res://Sprites/Temporary/1588959089_7c0fc2509ae02f26b34709c8e64617076cfdaba8eaeffadaad33cb5c1fb24b4d.jpg" id="1_q4r3q"]
-[ext_resource type="PackedScene" uid="uid://6et3xlv6y4mp" path="res://Character/st3ve.tscn" id="2_485bs"]
-[ext_resource type="PackedScene" uid="uid://c0m36g5wplhcc" path="res://Character/j4ck.tscn" id="3_fvi5k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2ewoc"]
 texture = ExtResource("1_q4r3q")
@@ -341,15 +340,10 @@ size = Vector2(1005, 62)
 
 [node name="Level" type="Node2D"]
 position = Vector2(-206, -114)
+script = ExtResource("1_bi5fm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-6, 7)
-
-[node name="J4ck" parent="." instance=ExtResource("3_fvi5k")]
-position = Vector2(-147, -51)
-
-[node name="St3ve" parent="." instance=ExtResource("2_485bs")]
-position = Vector2(-253, -53)
 
 [node name="Foreground" type="TileMapLayer" parent="."]
 position = Vector2(-351, 36)
