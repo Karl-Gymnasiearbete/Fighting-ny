@@ -152,4 +152,5 @@ Steve = NodePath("../../J4ck")
 [node name="jump" type="Node" parent="State Machine" node_paths=PackedStringArray("Steve")]
 script = ExtResource("10_1biw4")
 Steve = NodePath("../../J4ck")
+jump_force = 600
 air_speed = 300

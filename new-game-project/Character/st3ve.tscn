@@ -53,4 +53,5 @@ speed = 300
 [node name="jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("Steve")]
 script = ExtResource("5_fsb3l")
 Steve = NodePath("../../St3ve")
+jump_force = 600
 air_speed = 300
