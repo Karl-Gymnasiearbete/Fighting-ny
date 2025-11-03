@@ -1,3 +1,5 @@
 extends Node
 
-var selected_character = "J4ck"
+var p1_character = ""
+var p2_character = ""
+var players_ready = 0

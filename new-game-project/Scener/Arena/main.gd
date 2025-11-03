@@ -4,12 +4,14 @@ func _ready():
 	spawn_player()
 
 func spawn_player():
-	var character_scene
+	var p1_scene = load("res://Character/" + Global.p1_scene + ".tscn")
+	var player1 = p1_scene.instantiate()
+	player1.postion = Vector2(200,300)
+	player1.player_number = 1
+	add_child(player1)
 	
-	if Global.selected_character == "J4ck":
-		character_scene = load("res://Character/j4ck.tscn")
-	elif Global.selected_character == "St3ve":
-		character_scene = load("res://Character/st3ve.tscn")
-	
-	var player = character_scene.instantiate()
-	add_child(player)
+	var p2_scene = load("res://Character/" + Global.p2_scene + ".tscn")
+	var player2 = p2_scene.instantiate()
+	player2.postion = Vector2(600,300)
+	player2.player_number = 2
+	add_child(player1)
