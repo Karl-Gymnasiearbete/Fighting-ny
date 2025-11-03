@@ -6,31 +6,19 @@
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="TextureRect" type="TextureRect" parent="Camera2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D"]
 texture_filter = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -576.0
-offset_top = -324.0
-offset_bottom = -231.0
-grow_horizontal = 2
-grow_vertical = 2
+position = Vector2(-368, -281)
+scale = Vector2(2, 2)
 texture = ExtResource("1_n6gwh")
+region_enabled = true
+region_rect = Rect2(0, 0, 205, 40)
 
-[node name="TextureRect2" type="TextureRect" parent="Camera2D"]
+[node name="Sprite2D2" type="Sprite2D" parent="Camera2D"]
 texture_filter = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_top = -324.0
-offset_right = 576.0
-offset_bottom = -231.0
-grow_horizontal = 2
-grow_vertical = 2
+position = Vector2(368, -281)
+scale = Vector2(2, 2)
 texture = ExtResource("1_n6gwh")
 flip_h = true
+region_enabled = true
+region_rect = Rect2(0, 0, 205, 40)
