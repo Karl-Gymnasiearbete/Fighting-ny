@@ -6,10 +6,10 @@
 [ext_resource type="Script" uid="uid://bchyxfmd04fx6" path="res://Script/ScriptSteve/health_componentSt3ve.gd" id="3_26rlh"]
 [ext_resource type="Script" uid="uid://d01avwyfgjr7i" path="res://Script/ScriptSteve/IdleStateSt3ve.gd" id="3_g5n58"]
 [ext_resource type="Script" uid="uid://be2yg32kjdst4" path="res://Script/ScriptSteve/walkSt3ve.gd" id="4_g5n58"]
-[ext_resource type="Script" uid="uid://cj5s1rvbiaqx6" path="res://Script/ScriptSteve/hurt_boxSt3ve.gd" id="4_ojsrk"]
+[ext_resource type="Script" path="res://Script/ScriptSteve/hurt_boxSt3ve.gd" id="4_ojsrk"]
 [ext_resource type="Script" uid="uid://7hkym4he41p0" path="res://Script/ScriptSteve/jumpSt3ve.gd" id="5_fsb3l"]
-[ext_resource type="Script" uid="uid://dbok86ne0qehg" path="res://Script/ScriptSteve/punchSt3ve.gd" id="9_uplm4"]
-[ext_resource type="Script" uid="uid://8n0a8savo6e1" path="res://Script/hit_boxSt3ve.gd" id="10_7weew"]
+[ext_resource type="Script" path="res://Script/ScriptSteve/punchSt3ve.gd" id="9_uplm4"]
+[ext_resource type="Script" path="res://Script/hit_boxSt3ve.gd" id="10_7weew"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fsb3l"]
 radius = 16.0
@@ -24,6 +24,7 @@ size = Vector2(10, 10)
 [node name="Steve" type="Node2D"]
 
 [node name="St3ve" type="CharacterBody2D" parent="."]
+collision_mask = 3
 script = ExtResource("1_60an2")
 
 [node name="Sprite2D" type="Sprite2D" parent="St3ve"]
@@ -50,7 +51,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="HurtBox2" type="Area2D" parent="St3ve/Pain"]
 script = ExtResource("4_ojsrk")
-metadata/_custom_type_script = "uid://cj5s1rvbiaqx6"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="St3ve/Pain/HurtBox2"]
 position = Vector2(-5, 0)
@@ -68,17 +68,18 @@ Steve = NodePath("../..")
 [node name="walk" type="Node2D" parent="St3ve/StateMachine" node_paths=PackedStringArray("Steve")]
 script = ExtResource("4_g5n58")
 Steve = NodePath("../..")
+speed = 300
 
 [node name="jump" type="Node2D" parent="St3ve/StateMachine" node_paths=PackedStringArray("Steve")]
 script = ExtResource("5_fsb3l")
 Steve = NodePath("../..")
+jump_force = 600
 
 [node name="punch2" type="Node2D" parent="St3ve/StateMachine"]
 script = ExtResource("9_uplm4")
 
 [node name="hitbox2" type="Area2D" parent="St3ve/StateMachine/punch2"]
 script = ExtResource("10_7weew")
-metadata/_custom_type_script = "uid://8n0a8savo6e1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="St3ve/StateMachine/punch2/hitbox2"]
 position = Vector2(16, 5)

@@ -1,13 +1,18 @@
 extends State
 @export var Steve: CharacterBody2D
+@export var anim: AnimatedSprite2D  # Add this line
+
 var gravity: float = float(ProjectSettings.get_setting("physics/2d/default_gravity"))
 @export var speed := 400
 
 func enter() -> void:
 	print("Entered walk")
+	if anim:
+		anim.play("walk")  # Play walk animation when entering state
 
 func Physics_Update(delta: float) -> void:
 	var dir_x := Input.get_axis("leftArrow", "rightArrow")
+	Steve.velocity.x = dir_x * speed
 	
 	# Update punch cooldown
 	var punch_state = get_parent().states.get("punch")
@@ -33,9 +38,6 @@ func Physics_Update(delta: float) -> void:
 		Steve.velocity.x = 0
 		Transitioned.emit(self, "idle")
 		return
-	
-	# Horizontal movement
-	Steve.velocity.x = dir_x * speed
 	
 	# Gravity
 	if not Steve.is_on_floor():

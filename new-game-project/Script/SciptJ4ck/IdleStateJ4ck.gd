@@ -1,10 +1,13 @@
 extends State
 @export var Steve: CharacterBody2D
 var gravity: float = float(ProjectSettings.get_setting("physics/2d/default_gravity"))
+@export var anim: AnimatedSprite2D
 
 func enter() -> void:
 	Steve.velocity = Vector2.ZERO
 	print("Entered idle")
+	if anim:
+		anim.play("Idle")
 
 func Physics_Update(delta: float) -> void:
 	var dir_x := Input.get_axis("leftArrow", "rightArrow")

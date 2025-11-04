@@ -7,7 +7,7 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.75, 1.75)
+zoom = Vector2(3, 3)
 script = ExtResource("1_d5p8q")
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera2D"]

@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" uid="uid://d3nvijr0t0s66" path="res://Script/SciptJ4ck/damage_&_deathj4ck.gd" id="1_a0t0p"]
 [ext_resource type="Texture2D" uid="uid://cotwdhabtdfwy" path="res://Sprites/J4ck/gymnasie-arbete-character1.png" id="1_jfbpb"]
-[ext_resource type="Script" uid="uid://n1eftfyyyfed" path="res://Script/SciptJ4ck/hurt_box.gd" id="4_gmptl"]
+[ext_resource type="Script" path="res://Script/SciptJ4ck/hurt_box.gd" id="4_gmptl"]
 [ext_resource type="Script" uid="uid://cwsp3sixy33op" path="res://Script/SciptJ4ck/health_componentj4ck.gd" id="6_6kfj8"]
 [ext_resource type="Script" uid="uid://c0yfetlwjkdw1" path="res://Script/SciptJ4ck/StateMachineJ4ck.gd" id="7_gmptl"]
 [ext_resource type="Script" uid="uid://ci8sna3jllune" path="res://Script/SciptJ4ck/walkJ4ck.gd" id="8_0i4u0"]
-[ext_resource type="Script" uid="uid://d3tb0iuvmk87f" path="res://Script/SciptJ4ck/punch.gd" id="9_0i4u0"]
+[ext_resource type="Script" path="res://Script/SciptJ4ck/punch.gd" id="9_0i4u0"]
 [ext_resource type="Script" uid="uid://dmxfxr0cbqsy7" path="res://Script/SciptJ4ck/IdleStateJ4ck.gd" id="9_8unil"]
 [ext_resource type="Script" uid="uid://dtuesrbjnx851" path="res://Script/SciptJ4ck/jumpJ4ck.gd" id="10_1biw4"]
-[ext_resource type="Script" uid="uid://7qojpre8en2i" path="res://Script/SciptJ4ck/hit_box.gd" id="10_8unil"]
+[ext_resource type="Script" path="res://Script/SciptJ4ck/hit_box.gd" id="10_8unil"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6kfj8"]
 atlas = ExtResource("1_jfbpb")
@@ -121,14 +121,14 @@ size = Vector2(10, 9)
 [node name="J4ck" type="Node2D"]
 
 [node name="J4ck" type="CharacterBody2D" parent="."]
+collision_mask = 3
 script = ExtResource("1_a0t0p")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="J4ck"]
+[node name="animatedsprite2d" type="AnimatedSprite2D" parent="J4ck"]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_44bxf")
 animation = &"walk"
 autoplay = "Idle"
-frame_progress = 0.729211
 
 [node name="Collision" type="CollisionShape2D" parent="J4ck"]
 position = Vector2(-2, 0)
@@ -149,7 +149,6 @@ horizontal_alignment = 1
 
 [node name="HurtBox" type="Area2D" parent="J4ck/Pain"]
 script = ExtResource("4_gmptl")
-metadata/_custom_type_script = "uid://n1eftfyyyfed"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="J4ck/Pain/HurtBox"]
 position = Vector2(-6, 1)
@@ -160,17 +159,21 @@ debug_color = Color(0.94771, 4.23551e-06, 0.581792, 0.42)
 script = ExtResource("7_gmptl")
 initial_state = NodePath("idle")
 
-[node name="walk" type="Node2D" parent="J4ck/State Machine" node_paths=PackedStringArray("Steve")]
+[node name="walk" type="Node2D" parent="J4ck/State Machine" node_paths=PackedStringArray("Steve", "anim")]
 script = ExtResource("8_0i4u0")
 Steve = NodePath("../..")
+anim = NodePath("../../animatedsprite2d")
+speed = 300
 
-[node name="idle" type="Node2D" parent="J4ck/State Machine" node_paths=PackedStringArray("Steve")]
+[node name="idle" type="Node2D" parent="J4ck/State Machine" node_paths=PackedStringArray("Steve", "anim")]
 script = ExtResource("9_8unil")
 Steve = NodePath("../..")
+anim = NodePath("../../animatedsprite2d")
 
 [node name="jump" type="Node2D" parent="J4ck/State Machine" node_paths=PackedStringArray("Steve")]
 script = ExtResource("10_1biw4")
 Steve = NodePath("../..")
+jump_force = 600
 
 [node name="punch" type="Node2D" parent="J4ck/State Machine" node_paths=PackedStringArray("Steve")]
 script = ExtResource("9_0i4u0")
@@ -178,7 +181,6 @@ Steve = NodePath("../..")
 
 [node name="HitBox" type="Area2D" parent="J4ck/State Machine/punch"]
 script = ExtResource("10_8unil")
-metadata/_custom_type_script = "uid://7qojpre8en2i"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="J4ck/State Machine/punch/HitBox"]
 position = Vector2(19, -5)
