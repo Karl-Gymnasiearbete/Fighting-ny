@@ -372,8 +372,8 @@ position = Vector2(1063.5, 432)
 shape = SubResource("RectangleShape2D_pavvm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(602, 338)
-zoom = Vector2(1.75, 1.75)
+position = Vector2(605, 335)
+zoom = Vector2(2, 2)
 script = ExtResource("3_guv5r")
 min_zoom = 2.0
 max_zoom = 3.0
