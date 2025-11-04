@@ -32,7 +32,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 205, 40)
 
 [node name="iconp2" type="Sprite2D" parent="Camera2D/Sprite2D2"]
-position = Vector2(84.5, -1.5)
+position = Vector2(83.5, -1.5)
 texture = ExtResource("2_55fwh")
 flip_h = true
 region_enabled = true

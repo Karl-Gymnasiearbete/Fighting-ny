@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var camera = $Node2D
+
 func _ready():
 	spawn_player()
 
@@ -13,3 +15,6 @@ func spawn_player():
 	var player2 = p2_scene.instantiate()
 	player2.position = Vector2(750,300)
 	add_child(player2)
+	
+	camera.player1 = player1
+	camera.player2 = player2

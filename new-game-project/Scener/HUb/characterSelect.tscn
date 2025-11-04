@@ -43,6 +43,7 @@ region_enabled = true
 region_rect = Rect2(32, 0, 32, 32)
 
 [node name="Label" type="Label" parent="J4ck"]
+layout_mode = 0
 offset_left = 43.0
 offset_top = 129.0
 offset_right = 86.0
