@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://6et3xlv6y4mp"]
+[gd_scene load_steps=14 format=3 uid="uid://6et3xlv6y4mp"]
 
 [ext_resource type="Texture2D" uid="uid://dnqa5iuw51jme" path="res://Sprites/steve/steve.png" id="1_45yjn"]
 [ext_resource type="Script" uid="uid://cla57k3yghlt" path="res://Script/ScriptSteve/damage_&_deathSt3ve.gd" id="1_60an2"]
@@ -6,11 +6,20 @@
 [ext_resource type="Script" uid="uid://bchyxfmd04fx6" path="res://Script/ScriptSteve/health_componentSt3ve.gd" id="3_26rlh"]
 [ext_resource type="Script" uid="uid://d01avwyfgjr7i" path="res://Script/ScriptSteve/IdleStateSt3ve.gd" id="3_g5n58"]
 [ext_resource type="Script" uid="uid://be2yg32kjdst4" path="res://Script/ScriptSteve/walkSt3ve.gd" id="4_g5n58"]
+[ext_resource type="Script" uid="uid://cj5s1rvbiaqx6" path="res://Script/ScriptSteve/hurt_boxSt3ve.gd" id="4_ojsrk"]
 [ext_resource type="Script" uid="uid://7hkym4he41p0" path="res://Script/ScriptSteve/jumpSt3ve.gd" id="5_fsb3l"]
+[ext_resource type="Script" uid="uid://dbok86ne0qehg" path="res://Script/ScriptSteve/punchSt3ve.gd" id="9_uplm4"]
+[ext_resource type="Script" uid="uid://8n0a8savo6e1" path="res://Script/hit_boxSt3ve.gd" id="10_7weew"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fsb3l"]
 radius = 16.0
 height = 76.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k00dq"]
+size = Vector2(20, 76)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bw04x"]
+size = Vector2(10, 10)
 
 [node name="Steve" type="Node2D"]
 
@@ -35,23 +44,43 @@ offset_right = 23.0
 offset_bottom = -43.0
 text = "100hp"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="Pain" type="Node2D" parent="St3ve"]
+
+[node name="HurtBox2" type="Area2D" parent="St3ve/Pain"]
+script = ExtResource("4_ojsrk")
+metadata/_custom_type_script = "uid://cj5s1rvbiaqx6"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="St3ve/Pain/HurtBox2"]
+position = Vector2(-5, 0)
+shape = SubResource("RectangleShape2D_k00dq")
+debug_color = Color(0.959499, 1.15514e-06, 0.521285, 0.42)
+
+[node name="StateMachine" type="Node2D" parent="St3ve" node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_jx7ui")
-initial_state = NodePath("walk")
+initial_state = NodePath("idle")
 
-[node name="idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("Steve")]
+[node name="idle" type="Node2D" parent="St3ve/StateMachine" node_paths=PackedStringArray("Steve")]
 script = ExtResource("3_g5n58")
-Steve = NodePath("../../St3ve")
-metadata/_custom_type_script = "uid://d01avwyfgjr7i"
+Steve = NodePath("../..")
 
-[node name="walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("Steve")]
+[node name="walk" type="Node2D" parent="St3ve/StateMachine" node_paths=PackedStringArray("Steve")]
 script = ExtResource("4_g5n58")
-Steve = NodePath("../../St3ve")
-speed = 300
+Steve = NodePath("../..")
 
-[node name="jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("Steve")]
+[node name="jump" type="Node2D" parent="St3ve/StateMachine" node_paths=PackedStringArray("Steve")]
 script = ExtResource("5_fsb3l")
-Steve = NodePath("../../St3ve")
-jump_force = 600
-air_speed = 300
+Steve = NodePath("../..")
+
+[node name="punch2" type="Node2D" parent="St3ve/StateMachine"]
+script = ExtResource("9_uplm4")
+
+[node name="hitbox2" type="Area2D" parent="St3ve/StateMachine/punch2"]
+script = ExtResource("10_7weew")
+metadata/_custom_type_script = "uid://8n0a8savo6e1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="St3ve/StateMachine/punch2/hitbox2"]
+position = Vector2(16, 5)
+shape = SubResource("RectangleShape2D_bw04x")
+debug_color = Color(0.643706, 0.523041, 3.85046e-07, 0.42)
