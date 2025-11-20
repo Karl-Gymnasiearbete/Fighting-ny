@@ -5,13 +5,19 @@ var health : int
 
 func _ready() -> void:
 	health = max_health
+	update_healthbar()
+
+func update_healthbar() -> void:
+	# Update the progress bar value
+	$"../ProgressBar".value = health
+	# Update the label if you still want text display
 	$"../Label".text = str(health) + "hp"
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func damage(attack):
+func damage(attack) -> void:
 	health -= attack
-	$"../Label".text = str(health) + "hp"
+	health = max(health, 0)  # Prevent negative health
+	update_healthbar()
+	
 	if health <= 0:
 		print("Jack Died")
 		get_parent().queue_free()
