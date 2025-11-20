@@ -109,7 +109,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gmptl"]
-radius = 13.0
+radius = 21.0
 height = 80.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1biw4"]
@@ -178,6 +178,7 @@ jump_force = 600
 [node name="punch" type="Node2D" parent="J4ck/State Machine" node_paths=PackedStringArray("Steve")]
 script = ExtResource("9_0i4u0")
 Steve = NodePath("../..")
+punch_cooldown = 0.25
 
 [node name="HitBox" type="Area2D" parent="J4ck/State Machine/punch"]
 script = ExtResource("10_8unil")

@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://8n0a8savo6e1" path="res://Script/ScriptSteve/hit_boxSt3ve.gd" id="10_7weew"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fsb3l"]
-radius = 16.0
+radius = 21.0
 height = 76.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k00dq"]
@@ -32,7 +32,7 @@ texture_filter = 1
 texture = ExtResource("1_45yjn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="St3ve"]
-position = Vector2(-5, 0)
+position = Vector2(-5, 1)
 shape = SubResource("CapsuleShape2D_fsb3l")
 
 [node name="HealthComponent" type="Node2D" parent="St3ve"]
@@ -75,8 +75,10 @@ script = ExtResource("5_fsb3l")
 Steve = NodePath("../..")
 jump_force = 600
 
-[node name="punch2" type="Node2D" parent="St3ve/StateMachine"]
+[node name="punch2" type="Node2D" parent="St3ve/StateMachine" node_paths=PackedStringArray("Steve")]
 script = ExtResource("9_uplm4")
+Steve = NodePath("../..")
+punch2_cooldown = 0.25
 
 [node name="HitBox" type="Area2D" parent="St3ve/StateMachine/punch2"]
 script = ExtResource("10_7weew")
