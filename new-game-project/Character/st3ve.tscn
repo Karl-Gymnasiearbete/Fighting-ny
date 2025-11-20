@@ -78,10 +78,11 @@ jump_force = 600
 [node name="punch2" type="Node2D" parent="St3ve/StateMachine"]
 script = ExtResource("9_uplm4")
 
-[node name="hitbox2" type="Area2D" parent="St3ve/StateMachine/punch2"]
+[node name="HitBox" type="Area2D" parent="St3ve/StateMachine/punch2"]
 script = ExtResource("10_7weew")
+metadata/_custom_type_script = "uid://8n0a8savo6e1"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="St3ve/StateMachine/punch2/hitbox2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="St3ve/StateMachine/punch2/HitBox"]
 position = Vector2(16, 5)
 shape = SubResource("RectangleShape2D_bw04x")
 debug_color = Color(0.643706, 0.523041, 3.85046e-07, 0.42)

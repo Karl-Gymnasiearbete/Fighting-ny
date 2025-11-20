@@ -181,6 +181,7 @@ Steve = NodePath("../..")
 
 [node name="HitBox" type="Area2D" parent="J4ck/State Machine/punch"]
 script = ExtResource("10_8unil")
+metadata/_custom_type_script = "uid://8n0a8savo6e1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="J4ck/State Machine/punch/HitBox"]
 position = Vector2(19, -5)

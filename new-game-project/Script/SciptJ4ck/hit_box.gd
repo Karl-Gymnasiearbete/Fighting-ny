@@ -1,5 +1,5 @@
-extends Area2D
 class_name HitBox
+extends Area2D
 
 @onready var collision_shape = $CollisionShape2D
 var is_enabled := false
