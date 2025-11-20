@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=4 uid="uid://cuojwadspstlr"]
+[gd_scene load_steps=11 format=4 uid="uid://cuojwadspstlr"]
 
-[ext_resource type="Script" uid="uid://ch3odhxojpnfj" path="res://Scener/Arena/main.gd" id="1_bi5fm"]
+[ext_resource type="Script" uid="uid://ch3odhxojpnfj" path="res://Script/managers/main.gd" id="1_bi5fm"]
 [ext_resource type="Texture2D" uid="uid://duxahvnefx77h" path="res://Sprites/Temporary/1588959089_7c0fc2509ae02f26b34709c8e64617076cfdaba8eaeffadaad33cb5c1fb24b4d.jpg" id="1_q4r3q"]
-[ext_resource type="Script" uid="uid://b5b21vawud6wc" path="res://Scener/Arena/camera_2d.gd" id="3_guv5r"]
+[ext_resource type="PackedScene" uid="uid://drvita4iyjsc7" path="res://Scener/Arena/camerascen.tscn" id="3_guv5r"]
+[ext_resource type="Script" uid="uid://bn8r0qbnntci" path="res://Script/managers/progress_barp1.gd" id="4_bi5fm"]
+[ext_resource type="Script" uid="uid://ckf1wjucd0mom" path="res://Script/managers/progress_barp2.gd" id="5_6d7dc"]
+[ext_resource type="Texture2D" uid="uid://ck1rtpndxcees" path="res://Sprites/ui/ui-healtbar.png" id="6_04jt5"]
+[ext_resource type="Texture2D" uid="uid://bhb1twb03vri8" path="res://Sprites/ui/health.png" id="7_3a8um"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2ewoc"]
 texture = ExtResource("1_q4r3q")
@@ -371,9 +375,31 @@ position = Vector2(-454, 34)
 position = Vector2(1063.5, 432)
 shape = SubResource("RectangleShape2D_pavvm")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(605, 335)
-zoom = Vector2(2, 2)
-script = ExtResource("3_guv5r")
-min_zoom = 2.0
-max_zoom = 3.0
+[node name="Node2D" parent="." instance=ExtResource("3_guv5r")]
+position = Vector2(610, 363)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureProgressBarp1" type="TextureProgressBar" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 28.0
+offset_top = 2.0
+offset_right = 204.0
+offset_bottom = 18.0
+scale = Vector2(2, 2)
+texture_under = ExtResource("6_04jt5")
+texture_progress = ExtResource("7_3a8um")
+script = ExtResource("4_bi5fm")
+
+[node name="TextureProgressBarp2" type="TextureProgressBar" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 1118.0
+offset_top = 34.0
+offset_right = 1294.0
+offset_bottom = 50.0
+rotation = 3.14159
+scale = Vector2(2, 2)
+pivot_offset = Vector2(2, 0)
+texture_under = ExtResource("6_04jt5")
+texture_progress = ExtResource("7_3a8um")
+script = ExtResource("5_6d7dc")

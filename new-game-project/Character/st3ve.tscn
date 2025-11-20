@@ -6,10 +6,10 @@
 [ext_resource type="Script" uid="uid://bchyxfmd04fx6" path="res://Script/ScriptSteve/health_componentSt3ve.gd" id="3_26rlh"]
 [ext_resource type="Script" uid="uid://d01avwyfgjr7i" path="res://Script/ScriptSteve/IdleStateSt3ve.gd" id="3_g5n58"]
 [ext_resource type="Script" uid="uid://be2yg32kjdst4" path="res://Script/ScriptSteve/walkSt3ve.gd" id="4_g5n58"]
-[ext_resource type="Script" path="res://Script/ScriptSteve/hurt_boxSt3ve.gd" id="4_ojsrk"]
+[ext_resource type="Script" uid="uid://cj5s1rvbiaqx6" path="res://Script/ScriptSteve/hurt_boxSt3ve.gd" id="4_ojsrk"]
 [ext_resource type="Script" uid="uid://7hkym4he41p0" path="res://Script/ScriptSteve/jumpSt3ve.gd" id="5_fsb3l"]
-[ext_resource type="Script" path="res://Script/ScriptSteve/punchSt3ve.gd" id="9_uplm4"]
-[ext_resource type="Script" path="res://Script/hit_boxSt3ve.gd" id="10_7weew"]
+[ext_resource type="Script" uid="uid://dbok86ne0qehg" path="res://Script/ScriptSteve/punchSt3ve.gd" id="9_uplm4"]
+[ext_resource type="Script" uid="uid://8n0a8savo6e1" path="res://Script/ScriptSteve/hit_boxSt3ve.gd" id="10_7weew"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fsb3l"]
 radius = 16.0
