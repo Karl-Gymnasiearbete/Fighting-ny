@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c0m36g5wplhcc"]
+[gd_scene load_steps=29 format=3 uid="uid://c0m36g5wplhcc"]
 
 [ext_resource type="Script" uid="uid://d3nvijr0t0s66" path="res://Script/SciptJ4ck/damage_&_deathj4ck.gd" id="1_a0t0p"]
 [ext_resource type="Texture2D" uid="uid://cotwdhabtdfwy" path="res://Sprites/J4ck/gymnasie-arbete-character1.png" id="1_jfbpb"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://dmxfxr0cbqsy7" path="res://Script/SciptJ4ck/IdleStateJ4ck.gd" id="9_8unil"]
 [ext_resource type="Script" uid="uid://dtuesrbjnx851" path="res://Script/SciptJ4ck/jumpJ4ck.gd" id="10_1biw4"]
 [ext_resource type="Script" uid="uid://7qojpre8en2i" path="res://Script/SciptJ4ck/hit_box.gd" id="10_8unil"]
+[ext_resource type="Script" uid="uid://vytvwbyod0nx" path="res://Script/SciptJ4ck/kick.gd" id="10_44bxf"]
+[ext_resource type="Script" uid="uid://cj1nlr0r785ml" path="res://Script/SciptJ4ck/hit_box_kick.gd" id="11_0i4u0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6kfj8"]
 atlas = ExtResource("1_jfbpb")
@@ -113,7 +115,7 @@ radius = 21.0
 height = 80.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1biw4"]
-size = Vector2(20, 77)
+size = Vector2(20, 21.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_44bxf"]
 size = Vector2(10, 9)
@@ -151,7 +153,7 @@ horizontal_alignment = 1
 script = ExtResource("4_gmptl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="J4ck/Pain/HurtBox"]
-position = Vector2(-6, 1)
+position = Vector2(20, -23)
 shape = SubResource("RectangleShape2D_1biw4")
 debug_color = Color(0.94771, 4.23551e-06, 0.581792, 0.42)
 
@@ -180,11 +182,23 @@ script = ExtResource("9_0i4u0")
 Steve = NodePath("../..")
 punch_cooldown = 0.25
 
-[node name="HitBox" type="Area2D" parent="J4ck/State Machine/punch"]
+[node name="kick" type="Node2D" parent="J4ck/State Machine"]
+script = ExtResource("10_44bxf")
+
+[node name="HitBox" type="Area2D" parent="J4ck"]
 script = ExtResource("10_8unil")
 metadata/_custom_type_script = "uid://8n0a8savo6e1"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="J4ck/State Machine/punch/HitBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="J4ck/HitBox"]
 position = Vector2(19, -5)
 shape = SubResource("RectangleShape2D_44bxf")
 debug_color = Color(0.651582, 0.519049, 0, 0.42)
+
+[node name="HitBoxKick" type="Area2D" parent="J4ck"]
+script = ExtResource("11_0i4u0")
+metadata/_custom_type_script = "uid://cj1nlr0r785ml"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="J4ck/HitBoxKick"]
+position = Vector2(18, 32)
+shape = SubResource("RectangleShape2D_44bxf")
+debug_color = Color(0.450234, 0.199004, 0, 0.42)

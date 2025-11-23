@@ -1,4 +1,5 @@
 extends State
+
 @export var Steve: CharacterBody2D
 var gravity: float = float(ProjectSettings.get_setting("physics/2d/default_gravity"))
 @export var jump_force := 450
@@ -16,13 +17,27 @@ func Physics_Update(delta: float) -> void:
 	if punch2_state:
 		punch2_state.update_cooldown(delta)
 	
-	# Punch input (can punch2 in air, with cooldown check)
+	# Update kick2 cooldown
+	var kick2_state = get_parent().states.get("kick2")
+	if kick2_state:
+		kick2_state.update_cooldown(delta)
+	
+	# Punch input (can punch in air, with cooldown check)
 	if Input.is_action_just_pressed("punch2"):
 		if punch2_state and punch2_state.can_punch2():
 			Transitioned.emit(self, "punch2")
 			return
 		else:
 			print("Punch on cooldown!")
+			return
+	
+	# Kick input (can kick in air, with cooldown check) - FIXED
+	if Input.is_action_just_pressed("kick2"):
+		if kick2_state and kick2_state.can_kick2():
+			Transitioned.emit(self, "kick2")
+			return
+		else:
+			print("Kick on cooldown!")
 			return
 	
 	# Horizontal air control

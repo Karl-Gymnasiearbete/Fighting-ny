@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://6et3xlv6y4mp"]
+[gd_scene load_steps=16 format=3 uid="uid://6et3xlv6y4mp"]
 
 [ext_resource type="Texture2D" uid="uid://dnqa5iuw51jme" path="res://Sprites/steve/steve.png" id="1_45yjn"]
 [ext_resource type="Script" uid="uid://cla57k3yghlt" path="res://Script/ScriptSteve/damage_&_deathSt3ve.gd" id="1_60an2"]
@@ -10,13 +10,15 @@
 [ext_resource type="Script" uid="uid://7hkym4he41p0" path="res://Script/ScriptSteve/jumpSt3ve.gd" id="5_fsb3l"]
 [ext_resource type="Script" uid="uid://dbok86ne0qehg" path="res://Script/ScriptSteve/punchSt3ve.gd" id="9_uplm4"]
 [ext_resource type="Script" uid="uid://8n0a8savo6e1" path="res://Script/ScriptSteve/hit_boxSt3ve.gd" id="10_7weew"]
+[ext_resource type="Script" uid="uid://cj4ltvfnie1on" path="res://Script/ScriptSteve/kick2.gd" id="10_k00dq"]
+[ext_resource type="Script" uid="uid://b1q2iymfhfyjn" path="res://Script/ScriptSteve/hit_box_kickSt3ve.gd" id="12_bw04x"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fsb3l"]
 radius = 21.0
 height = 76.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k00dq"]
-size = Vector2(20, 76)
+size = Vector2(20, 38)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bw04x"]
 size = Vector2(10, 10)
@@ -53,7 +55,7 @@ metadata/_edit_use_anchors_ = true
 script = ExtResource("4_ojsrk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="St3ve/Pain/HurtBox2"]
-position = Vector2(-5, 0)
+position = Vector2(18, -20)
 shape = SubResource("RectangleShape2D_k00dq")
 debug_color = Color(0.959499, 1.15514e-06, 0.521285, 0.42)
 
@@ -80,11 +82,23 @@ script = ExtResource("9_uplm4")
 Steve = NodePath("../..")
 punch2_cooldown = 0.25
 
-[node name="HitBox" type="Area2D" parent="St3ve/StateMachine/punch2"]
+[node name="kick2" type="Node2D" parent="St3ve/StateMachine"]
+script = ExtResource("10_k00dq")
+
+[node name="HitBox" type="Area2D" parent="St3ve"]
 script = ExtResource("10_7weew")
 metadata/_custom_type_script = "uid://8n0a8savo6e1"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="St3ve/StateMachine/punch2/HitBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="St3ve/HitBox"]
 position = Vector2(16, 5)
 shape = SubResource("RectangleShape2D_bw04x")
 debug_color = Color(0.643706, 0.523041, 3.85046e-07, 0.42)
+
+[node name="HitBoxKickSteve" type="Area2D" parent="St3ve"]
+script = ExtResource("12_bw04x")
+metadata/_custom_type_script = "uid://b1q2iymfhfyjn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="St3ve/HitBoxKickSteve"]
+position = Vector2(13, 32)
+shape = SubResource("RectangleShape2D_bw04x")
+debug_color = Color(0.262955, 0.131244, 7.21961e-08, 0.42)

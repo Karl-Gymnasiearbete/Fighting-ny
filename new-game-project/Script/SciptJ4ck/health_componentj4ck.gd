@@ -9,7 +9,7 @@ func _ready() -> void:
 
 func update_healthbar() -> void:
 	# Update the progress bar value
-	$"../ProgressBar".value = health
+	#$"../ProgressBar".value = health Ta bort # här!!
 	# Update the label if you still want text display
 	$"../Label".text = str(health) + "hp"
 
