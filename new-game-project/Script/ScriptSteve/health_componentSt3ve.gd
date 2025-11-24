@@ -19,5 +19,5 @@ func damage(attack) -> void:
 	update_healthbar()
 	
 	if health <= 0:
-		print("Jack Died")
+		print("Steve Died")
 		get_parent().queue_free()
