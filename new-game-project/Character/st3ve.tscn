@@ -73,15 +73,16 @@ script = ExtResource("9_uplm4")
 Steve = NodePath("../..")
 punch2_cooldown = 0.25
 
-[node name="kick2" type="Node2D" parent="St3ve/StateMachine"]
+[node name="kick2" type="Node2D" parent="St3ve/StateMachine" node_paths=PackedStringArray("Steve")]
 script = ExtResource("10_k00dq")
+Steve = NodePath("../..")
 
 [node name="HitBox" type="Area2D" parent="St3ve"]
 script = ExtResource("10_7weew")
 metadata/_custom_type_script = "uid://8n0a8savo6e1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="St3ve/HitBox"]
-position = Vector2(16, 5)
+position = Vector2(17, -2)
 shape = SubResource("RectangleShape2D_bw04x")
 debug_color = Color(0.643706, 0.523041, 3.85046e-07, 0.42)
 

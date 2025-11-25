@@ -10,7 +10,7 @@ func enter() -> void:
 	Steve.velocity.y = -jump_force
 
 func Physics_Update(delta: float) -> void:
-	var dir_x := Input.get_axis("left", "right")
+	var dir_x := Input.get_axis("leftArrow", "rightArrow")
 	
 	# Update punch cooldown
 	var punch_state = get_parent().states.get("punch")

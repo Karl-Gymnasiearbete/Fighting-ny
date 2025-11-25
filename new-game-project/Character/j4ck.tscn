@@ -280,8 +280,9 @@ Steve = NodePath("../..")
 punch_cooldown = 0.25
 anim = NodePath("../../AnimatedSprite2D")
 
-[node name="kick" type="Node2D" parent="J4ck/State Machine"]
+[node name="kick" type="Node2D" parent="J4ck/State Machine" node_paths=PackedStringArray("Steve")]
 script = ExtResource("10_44bxf")
+Steve = NodePath("../..")
 
 [node name="HitBox" type="Area2D" parent="J4ck"]
 script = ExtResource("10_8unil")

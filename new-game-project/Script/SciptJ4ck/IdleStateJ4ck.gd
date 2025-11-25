@@ -1,5 +1,4 @@
 extends State
-
 @export var Steve: CharacterBody2D
 var gravity: float = float(ProjectSettings.get_setting("physics/2d/default_gravity"))
 @export var anim: AnimatedSprite2D
