@@ -244,14 +244,6 @@ shape = SubResource("CapsuleShape2D_gmptl")
 [node name="HealthComponent" type="Node2D" parent="J4ck"]
 script = ExtResource("6_6kfj8")
 
-[node name="Label" type="Label" parent="J4ck"]
-offset_left = -25.0
-offset_top = -66.0
-offset_right = 23.0
-offset_bottom = -43.0
-text = "100hp"
-horizontal_alignment = 1
-
 [node name="Pain" type="Node2D" parent="J4ck"]
 
 [node name="HurtBox" type="Area2D" parent="J4ck/Pain"]

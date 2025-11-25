@@ -384,7 +384,7 @@ position = Vector2(610, 363)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="TextureProgressBarp1" type="TextureProgressBar" parent="CanvasLayer"]
+[node name="TextureProgressBarp1" type="TextureProgressBar" parent="CanvasLayer" groups=["p1_healthbar"]]
 texture_filter = 1
 offset_left = 28.0
 offset_top = 2.0
@@ -396,7 +396,7 @@ texture_under = ExtResource("6_04jt5")
 texture_progress = ExtResource("7_3a8um")
 script = ExtResource("4_bi5fm")
 
-[node name="TextureProgressBarp2" type="TextureProgressBar" parent="CanvasLayer"]
+[node name="TextureProgressBarp2" type="TextureProgressBar" parent="CanvasLayer" groups=["p2_healthbar"]]
 texture_filter = 1
 offset_left = 1118.0
 offset_top = 34.0

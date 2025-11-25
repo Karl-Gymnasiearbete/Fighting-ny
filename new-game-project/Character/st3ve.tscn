@@ -40,15 +40,6 @@ shape = SubResource("CapsuleShape2D_fsb3l")
 [node name="HealthComponent" type="Node2D" parent="St3ve"]
 script = ExtResource("3_26rlh")
 
-[node name="Label" type="Label" parent="St3ve"]
-offset_left = -25.0
-offset_top = -66.0
-offset_right = 23.0
-offset_bottom = -43.0
-text = "100hp"
-horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
-
 [node name="Pain" type="Node2D" parent="St3ve"]
 
 [node name="HurtBox2" type="Area2D" parent="St3ve/Pain"]
