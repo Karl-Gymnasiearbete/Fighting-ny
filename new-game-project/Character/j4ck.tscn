@@ -224,7 +224,7 @@ size = Vector2(10, 9)
 
 [node name="J4ck" type="Node2D"]
 
-[node name="J4ck" type="CharacterBody2D" parent="."]
+[node name="J4ck" type="CharacterBody2D" parent="." groups=["players"]]
 collision_mask = 3
 script = ExtResource("1_a0t0p")
 

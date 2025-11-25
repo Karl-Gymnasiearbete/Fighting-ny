@@ -25,7 +25,7 @@ size = Vector2(10, 10)
 
 [node name="Steve" type="Node2D"]
 
-[node name="St3ve" type="CharacterBody2D" parent="."]
+[node name="St3ve" type="CharacterBody2D" parent="." groups=["players"]]
 collision_mask = 3
 script = ExtResource("1_60an2")
 
