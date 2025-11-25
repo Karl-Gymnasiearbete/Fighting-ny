@@ -6,6 +6,7 @@ var gravity: float = float(ProjectSettings.get_setting("physics/2d/default_gravi
 @export var punch_duration := 0.3
 @export var hitbox_active_duration := 0.1
 @export var punch_cooldown := 1.0
+@export var anim: AnimatedSprite2D
 
 var punch_timer := 0.0
 var cooldown_timer := 0.0
@@ -33,6 +34,8 @@ func enter() -> void:
 	print("Entered punch (J4ck)")
 	punch_timer = 0.0
 	hitbox_disabled = false
+	if anim:
+		anim.play("punch")
 	
 	# Find HitBox node if we don't have it yet
 	if not hit_box and Steve:

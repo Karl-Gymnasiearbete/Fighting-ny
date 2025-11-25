@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cotwdhabtdfwy"
-path="res://.godot/imported/gymnasie-arbete-character1.png-6e9e16ed3322ee8bb0b5107585ee34ad.ctex"
+uid="uid://dsr7hf1hgaf6p"
+path="res://.godot/imported/jackanim.png-58dabbe8f7239ced3f5d8f2c33c69d99.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/J4ck/gymnasie-arbete-character1.png"
-dest_files=["res://.godot/imported/gymnasie-arbete-character1.png-6e9e16ed3322ee8bb0b5107585ee34ad.ctex"]
+source_file="res://Sprites/J4ck/jackanim.png"
+dest_files=["res://.godot/imported/jackanim.png-58dabbe8f7239ced3f5d8f2c33c69d99.ctex"]
 
 [params]
 

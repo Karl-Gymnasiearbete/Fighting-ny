@@ -2,6 +2,7 @@ extends Node2D
 @export var initial_state: State
 var current_state: State
 var states: Dictionary = {}
+
 func _ready() -> void:
 	print("StateMachine ready")
 

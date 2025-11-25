@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://7iyovaqaeh2o"]
+[gd_scene load_steps=3 format=3 uid="uid://dag38s31f25nq"]
 
-[ext_resource type="Script" path="res://Script/managers/main_menu.gd" id="1_ibxnb"]
+[ext_resource type="Script" uid="uid://dosr1u4udgcys" path="res://Script/managers/main_menu.gd" id="1_ibxnb"]
 [ext_resource type="Texture2D" uid="uid://b181scq6csym" path="res://Scener/cat being eaten by fish.jpg" id="2_6gesk"]
 
 [node name="MainMenu" type="Node"]
