@@ -71,7 +71,6 @@ jump_force = 600
 [node name="punch2" type="Node2D" parent="St3ve/StateMachine" node_paths=PackedStringArray("Steve")]
 script = ExtResource("9_uplm4")
 Steve = NodePath("../..")
-punch2_cooldown = 0.25
 
 [node name="kick2" type="Node2D" parent="St3ve/StateMachine" node_paths=PackedStringArray("Steve")]
 script = ExtResource("10_k00dq")

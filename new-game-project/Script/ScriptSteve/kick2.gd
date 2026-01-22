@@ -3,54 +3,95 @@ extends State
 var hit_box: Area2D
 var gravity: float = float(ProjectSettings.get_setting("physics/2d/default_gravity"))
 
-@export var kick2_duration := 0.3
-@export var hitbox2_active_duration := 0.1
-@export var kick2_cooldown := 1.0
+@export var kick_duration := 0.3
+@export var hitbox_active_duration := 0.1
+@export var kick_cooldown := 1.0
+@export var anim: AnimatedSprite2D
 
-var kick2_timer := 0.0
+var kick_timer := 0.0
 var cooldown_timer := 0.0
-var hitbox2_disabled := false
+var hitbox_disabled := false
+var player_number : int = 0
 
 func _ready() -> void:
-	# Find hitbox when the state is ready - prioritize HitBoxKickSteve
+	detect_player_number()
+		
+# Replace the detect_player_number() function in ALL your state scripts with this:
+
+func detect_player_number() -> void:
+	var state_machine = get_parent()  # This is the StateMachine node
+	var root = state_machine.get_parent()  # This is the Node2D root
+	
+	print("Detecting player for state in: ", root.name)
+	
+	# Find the CharacterBody2D
+	var character = null
+	if root is CharacterBody2D:
+		character = root
+	else:
+		for child in root.get_children():
+			if child is CharacterBody2D:
+				character = child
+				break
+	
+	if not character:
+		print("⚠️ ERROR: Could not find CharacterBody2D!")
+		return
+	
+	print("Found CharacterBody2D: ", character.name)
+	
+	# Check if character has a player_number property set
+	if character.has_meta("player_number"):
+		player_number = character.get_meta("player_number")
+		print("✅ Player number from meta: ", player_number)
+		return
+	
+	# Fallback: check position in players group
+	var all_players = get_tree().get_nodes_in_group("players")
+	print("Players in group: ", all_players.size())
+	for i in range(all_players.size()):
+		if all_players[i] == character:
+			player_number = i + 1
+			character.set_meta("player_number", player_number)
+			print("✅ Player number from group position: ", player_number)
+			return
+	
+	print("⚠️ WARNING: Could not determine player number!")
+	
+	# Find hitbox when the state is ready
 	if Steve:
-		# Try Steve-specific names first
-		hit_box = Steve.find_child("HitBoxKickSteve", true, false)
-		if not hit_box:
-			hit_box = Steve.find_child("HitBox2", true, false)
+		hit_box = Steve.find_child("HitBoxKick", true, false)
 		if not hit_box:
 			hit_box = Steve.find_child("HitBox", true, false)
 		if not hit_box:
-			hit_box = Steve.find_child("HitBoxSteve", true, false)
+			hit_box = Steve.find_child("HitBoxKickJack", true, false)
 		
 		if hit_box:
-			print("✅ Found Steve's HitBox in _ready:", hit_box.name)
-			# Make sure it starts disabled
+			print("✅ Found HitBoxKick in _ready:", hit_box.name)
 			if hit_box.has_method("disable_hitbox"):
 				hit_box.disable_hitbox()
 		else:
-			print("⚠️ Could not find HitBox in _ready")
+			print("⚠️ Could not find HitBoxKick in _ready")
 
 func enter() -> void:
-	print("Entered kick2 (Steve)")
-	kick2_timer = 0.0
-	hitbox2_disabled = false
+	print("Entered kick - Player ", player_number)
+	kick_timer = 0.0
+	hitbox_disabled = false
+	if anim:
+		anim.play("kick")
 	
-	# Try to find hitbox if we don't have it yet - prioritize HitBoxKickSteve
+	# Find HitBoxKick node if we don't have it yet
 	if not hit_box and Steve:
-		hit_box = Steve.find_child("HitBoxKickSteve", true, false)
-		if not hit_box:
-			hit_box = Steve.find_child("HitBox2", true, false)
+		hit_box = Steve.find_child("HitBoxKick", true, false)
 		if not hit_box:
 			hit_box = Steve.find_child("HitBox", true, false)
+		if not hit_box:
+			hit_box = Steve.find_child("HitBox2", true, false)
 		
 		if hit_box:
-			print("✅ Found Steve's HitBox in enter:", hit_box.name)
+			print("✅ Found HitBoxKick:", hit_box.name)
 		else:
-			print("⚠️ Could not find HitBox - check node name!")
-			print("Steve's children:")
-			for child in Steve.get_children():
-				print("  -", child.name, "(", child.get_class(), ")")
+			print("⚠️ HitBoxKick not found!")
 			return
 	
 	if Steve:
@@ -58,22 +99,20 @@ func enter() -> void:
 	
 	# Enable the hitbox when kick starts
 	if hit_box and hit_box.has_method("enable_hitbox"):
-		print("Enabling Steve's hitbox")
+		print("Enabling kick hitbox")
 		hit_box.enable_hitbox()
-	else:
-		print("⚠️ hit_box is null or missing enable_hitbox method!")
 
 func Physics_Update(delta: float) -> void:
 	if not Steve:
 		return
 	
-	kick2_timer += delta
+	kick_timer += delta
 	
-	# Disable hitbox after short duration (only once)
-	if kick2_timer >= hitbox2_active_duration and hit_box and not hitbox2_disabled:
+	# Disable hitbox after short duration
+	if kick_timer >= hitbox_active_duration and hit_box and not hitbox_disabled:
 		if hit_box.has_method("disable_hitbox"):
 			hit_box.disable_hitbox()
-			hitbox2_disabled = true
+			hitbox_disabled = true
 	
 	# Apply gravity
 	if not Steve.is_on_floor():
@@ -81,27 +120,42 @@ func Physics_Update(delta: float) -> void:
 	
 	Steve.move_and_slide()
 	
-	# Exit kick2 state after animation completes
-	if kick2_timer >= kick2_duration:
-		var dir_x := Input.get_axis("left", "right")
-		
-		if not Steve.is_on_floor():
-			Transitioned.emit(self, "idle")
-		elif dir_x != 0:
-			Transitioned.emit(self, "walk")
-		else:
-			Transitioned.emit(self, "idle")
-		return
+	# Exit kick state after animation completes
+	if kick_timer >= kick_duration:
+		if player_number == 1:
+			var dir_x := Input.get_axis("leftp1", "rightp1")
+			
+			if not Steve.is_on_floor():
+				Transitioned.emit(self, "idle")
+			elif dir_x != 0:
+				Transitioned.emit(self, "walk")
+			else:
+				Transitioned.emit(self, "idle")
+			return
+			
+		elif player_number == 2:
+			var dir_x := Input.get_axis("leftp2", "rightp2")
+			
+			if not Steve.is_on_floor():
+				Transitioned.emit(self, "idle")
+			elif dir_x != 0:
+				Transitioned.emit(self, "walk")
+			else:
+				Transitioned.emit(self, "idle")
+			return
 
 func exit() -> void:
-	print("Exiting kick2 (Steve), disabling hitbox")
-	kick2_timer = 0.0
-	cooldown_timer = kick2_cooldown
+	print("Exiting kick, setting cooldown to ", kick_cooldown)
+	kick_timer = 0.0
+	cooldown_timer = kick_cooldown
 	if hit_box and hit_box.has_method("disable_hitbox"):
 		hit_box.disable_hitbox()
 
-func can_kick2() -> bool:
-	return cooldown_timer <= 0.0
+func can_kick() -> bool:
+	var can_do = cooldown_timer <= 0.0
+	if not can_do:
+		print("Can't kick - cooldown: ", cooldown_timer)
+	return can_do
 
 func update_cooldown(delta: float) -> void:
 	if cooldown_timer > 0:

@@ -29,4 +29,6 @@ func _on_st3ve_selected():
 		_start_game()
 
 func _start_game():
+	# Setup the inputs before changing scene
+	Global.setup_inputs()
 	get_tree().change_scene_to_file("res://Scener/Arena/main.tscn")
