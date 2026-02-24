@@ -1,30 +1,26 @@
 class_name HitBoxSteve
 extends Area2D
 
-@onready var collision_shape = $CollisionShape2D
+@export var damage_amount := 1
+var attack_type := "punch"
 var is_enabled := false
 
 func _ready():
-	# Set collision layers for HitBoxSteve
-	collision_layer = 2  # HitBoxSteve is on layer 2
-	collision_mask = 0   # HitBoxSteve doesn't check for collisions
+	collision_layer = 2   # Layer 2
+	collision_mask = 4    # Detects layer 3 (HurtBoxes)
 	
-	# Disable hitbox by default
-	if collision_shape:
-		collision_shape.disabled = true
-		is_enabled = false
-		print("HitBoxSteve initialized - disabled")
-	else:
-		print("⚠️ CollisionShape2D not found in HitBoxSteve")
+	if $CollisionShape2D:
+		$CollisionShape2D.disabled = true
+		print("HitBox initialized on ", get_parent().name)
 
 func enable_hitbox():
-	if collision_shape and not is_enabled:
-		collision_shape.disabled = false
+	if $CollisionShape2D and not is_enabled:
+		$CollisionShape2D.disabled = false
 		is_enabled = true
-		print("HitBoxSteve ENABLED")
+		print("HitBox ENABLED on ", get_parent().name)
 
 func disable_hitbox():
-	if collision_shape and is_enabled:
-		collision_shape.disabled = true
+	if $CollisionShape2D and is_enabled:
+		$CollisionShape2D.disabled = true
 		is_enabled = false
-		print("HitBoxSteve DISABLED")
+		print("HitBox DISABLED")

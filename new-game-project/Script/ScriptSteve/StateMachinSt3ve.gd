@@ -6,6 +6,7 @@ var states: Dictionary = {}
 func _ready() -> void:
 	print("StateMachine ready")
 
+
 	# Get reference to the root Node2D
 	var root = get_parent()
 	print("StateMachine parent (root): ", root.name, " (", root.get_class(), ")")
@@ -44,6 +45,7 @@ func _ready() -> void:
 		current_state = initial_state
 	else:
 		print("⚠️ No initial_state set!")
+	
 
 func _process(delta: float) -> void:
 	if current_state:

@@ -1,56 +1,65 @@
 extends Node2D
 
 @export var max_health := 10
-var health : int
-var healthbar : TextureProgressBar
-var player_number : int = 0  # Will be set by main scene
+var health: int
+var healthbar: TextureProgressBar
+var player_number: int = 0
 
 func _ready() -> void:
 	health = max_health
-	# Wait for player_number to be assigned
 	await get_tree().process_frame
 	
 	if player_number == 0:
-		# If not assigned, try to detect
 		detect_player_number()
 	
-	# Find the healthbar by group based on player number
 	var group_name = "p" + str(player_number) + "_healthbar"
 	var healthbars = get_tree().get_nodes_in_group(group_name)
 	if healthbars.size() > 0:
 		healthbar = healthbars[0]
 		healthbar.max_value = max_health
+		print("✅ HealthComponent (Player ", player_number, ") found healthbar: ", healthbar.name)
+	else:
+		print("⚠️ No healthbar found for group: ", group_name)
+	
 	update_healthbar()
 
 func detect_player_number() -> void:
-	var character = get_parent()
-	# Use the character's position in the tree or a marker
-	# This assumes player 1 is spawned first
-	var all_characters = get_tree().get_nodes_in_group("players")
-	for i in range(all_characters.size()):
-		if all_characters[i] == character:
+	# Layout: HealthComponent -> Pain(Area2D) -> CharacterBody2D -> Node2D(root)
+	var pain = get_parent()             # Pain Area2D
+	var character_body = pain.get_parent()  # CharacterBody2D
+	
+	# Check meta first (set by main.gd at spawn)
+	if character_body.has_meta("player_number"):
+		player_number = character_body.get_meta("player_number")
+		print("✅ HealthComponent detected player: ", player_number, " via meta on ", character_body.name)
+		return
+	
+	# Fallback: search players group
+	var all_players = get_tree().get_nodes_in_group("players")
+	for i in range(all_players.size()):
+		if all_players[i] == character_body:
 			player_number = i + 1
+			print("✅ HealthComponent detected player: ", player_number, " via group")
 			return
 	
-	# Fallback: check Global
-	if character.name == Global.p1_character or character.name.begins_with(Global.p1_character):
-		player_number = 1
-	else:
-		player_number = 2
+	print("⚠️ HealthComponent could not detect player number!")
 
 func update_healthbar() -> void:
 	if healthbar:
 		healthbar.value = health
-	
-	var label = get_parent().get_node_or_null("Label")
-	if label:
-		label.text = str(health) + "hp"
 
-func damage(attack) -> void:
-	health -= attack
+func damage(attack_damage: int, attack_type: String = "unknown") -> void:
+	health -= attack_damage
 	health = max(health, 0)
 	update_healthbar()
 	
+	print(get_parent().get_parent().name, " took ", attack_damage, " ", attack_type, " damage! Health: ", health, "/", max_health)
+	
 	if health <= 0:
-		print(get_parent().name + " Died")
-		get_parent().queue_free()
+		die()
+
+func die() -> void:
+	# Layout: HealthComponent -> Pain -> CharacterBody2D -> Node2D(root)
+	var character_root = get_parent().get_parent().get_parent()  # Node2D root
+	print(character_root.name, " has died!")
+	character_root.queue_free()  # Frees the entire character including all children

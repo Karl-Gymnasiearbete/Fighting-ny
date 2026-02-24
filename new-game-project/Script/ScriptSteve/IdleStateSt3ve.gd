@@ -61,44 +61,32 @@ func enter() -> void:
 func Physics_Update(delta: float) -> void:
 	if not is_instance_valid(Steve) or Steve.dead:
 		return
-
 	var dir_x := 0.0
-
 	if player_number == 1:
 		dir_x = Input.get_axis("leftp1", "rightp1")
-
 		if Input.is_action_just_pressed("punchp1"):
-			Transitioned.emit(self, "punch2")
+			Transitioned.emit(self, "punch2")  # Must match node name
 			return
-
 		if Input.is_action_just_pressed("kickp1"):
-			Transitioned.emit(self, "kick2")
+			Transitioned.emit(self, "kick2")   # Must match node name
 			return
-
 		if Input.is_action_just_pressed("jumpp1") and Steve.is_on_floor():
 			Transitioned.emit(self, "jump")
 			return
-
 	elif player_number == 2:
 		dir_x = Input.get_axis("leftp2", "rightp2")
-
 		if Input.is_action_just_pressed("punchp2"):
-			Transitioned.emit(self, "punch")
+			Transitioned.emit(self, "punch2")  # Must match node name
 			return
-
 		if Input.is_action_just_pressed("kickp2"):
-			Transitioned.emit(self, "kick2")
+			Transitioned.emit(self, "kick2")   # Must match node name
 			return
-
 		if Input.is_action_just_pressed("jumpp2") and Steve.is_on_floor():
 			Transitioned.emit(self, "jump")
 			return
-
 	if dir_x != 0:
 		Transitioned.emit(self, "walk")
 		return
-
 	if not Steve.is_on_floor():
 		Steve.velocity.y += gravity * delta
-
 	Steve.move_and_slide()

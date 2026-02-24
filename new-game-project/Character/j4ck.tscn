@@ -217,7 +217,7 @@ radius = 21.0
 height = 80.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1biw4"]
-size = Vector2(20, 21.25)
+size = Vector2(17.5, 78.625)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_44bxf"]
 size = Vector2(10, 9)
@@ -241,18 +241,19 @@ frame_progress = 0.581145
 position = Vector2(-2, 0)
 shape = SubResource("CapsuleShape2D_gmptl")
 
-[node name="HealthComponent" type="Node2D" parent="J4ck"]
-script = ExtResource("6_6kfj8")
-
 [node name="Pain" type="Node2D" parent="J4ck"]
 
 [node name="HurtBox" type="Area2D" parent="J4ck/Pain"]
 script = ExtResource("4_gmptl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="J4ck/Pain/HurtBox"]
-position = Vector2(20, -23)
+position = Vector2(-20.25, 0.6875)
 shape = SubResource("RectangleShape2D_1biw4")
 debug_color = Color(0.94771, 4.23551e-06, 0.581792, 0.42)
+
+[node name="HealthComponent" type="Node2D" parent="J4ck/Pain"]
+visible = false
+script = ExtResource("6_6kfj8")
 
 [node name="State Machine" type="Node2D" parent="J4ck" node_paths=PackedStringArray("initial_state")]
 script = ExtResource("7_gmptl")

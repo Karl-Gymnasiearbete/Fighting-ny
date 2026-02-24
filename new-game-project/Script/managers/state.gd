@@ -14,3 +14,9 @@ func Update(delta: float) -> void:
 
 func Physics_Update(delta: float) -> void:
 	pass
+
+#Flips player sprite
+var sprite_flipped: bool = false
+
+func determine_pos() -> void:
+	pass
