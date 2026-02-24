@@ -46,8 +46,7 @@ func detect_player_number() -> void:
 		
 func enter() -> void:
 	print("Entered walk - Player ", player_number)
-	if anim:
-		anim.play("walk")
+	pass
 
 func Physics_Update(delta: float) -> void:
 	if not Steve:
@@ -57,6 +56,7 @@ func Physics_Update(delta: float) -> void:
 	if player_number == 1:
 		var dir_x := Input.get_axis("leftp1", "rightp1")
 		Steve.velocity.x = dir_x * speed
+		anim.play("walk")
 		
 		# Update punch cooldown
 		var punch_state = get_parent().states.get("punch")
@@ -103,6 +103,7 @@ func Physics_Update(delta: float) -> void:
 	elif player_number == 2:
 		var dir_x := Input.get_axis("leftp2", "rightp2")
 		Steve.velocity.x = dir_x * speed
+		anim.play("walk")
 		
 		# Update punch cooldown
 		var punch_state = get_parent().states.get("punch")

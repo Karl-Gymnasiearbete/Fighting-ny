@@ -50,6 +50,7 @@ func detect_player_number() -> void:
 	print("⚠️ WARNING: Could not determine player number!")
 		
 func enter() -> void:
+	anim.play("Idle")
 	var punch_state = get_parent().states.get("punch")
 	if punch_state:
 		punch_state.cooldown_timer = 0.0

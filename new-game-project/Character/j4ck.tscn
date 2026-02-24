@@ -134,7 +134,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vfpqf")
 }],
-"loop": true,
+"loop": false,
 "name": &"block",
 "speed": 5.0
 }, {
@@ -142,7 +142,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5m8oj")
 }],
-"loop": true,
+"loop": false,
 "name": &"crouch",
 "speed": 5.0
 }, {
@@ -156,7 +156,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bwusx")
 }],
-"loop": true,
+"loop": false,
 "name": &"dmg_taken_crouch",
 "speed": 5.0
 }, {
@@ -170,7 +170,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xjvpd")
 }],
-"loop": true,
+"loop": false,
 "name": &"dmg_taken_stand",
 "speed": 5.0
 }, {
@@ -184,7 +184,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nsn5b")
 }],
-"loop": true,
+"loop": false,
 "name": &"punch",
 "speed": 4.0
 }, {
@@ -207,7 +207,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_n7jun")
 }],
-"loop": true,
+"loop": false,
 "name": &"walk",
 "speed": 5.0
 }]
@@ -232,10 +232,8 @@ script = ExtResource("1_a0t0p")
 texture_filter = 1
 position = Vector2(9, 0)
 sprite_frames = SubResource("SpriteFrames_5rtto")
-animation = &"punch"
+animation = &"walk"
 autoplay = "Idle"
-frame = 1
-frame_progress = 0.581145
 
 [node name="Collision" type="CollisionShape2D" parent="J4ck"]
 position = Vector2(-2, 0)
