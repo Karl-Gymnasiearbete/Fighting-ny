@@ -291,6 +291,7 @@ script = ExtResource("6_6kfj8")
 
 [node name="HitBox" type="Area2D" parent="J4ck/Hitboxes"]
 script = ExtResource("10_8unil")
+damage_amount = 2
 metadata/_custom_type_script = "uid://8n0a8savo6e1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="J4ck/Hitboxes/HitBox"]
@@ -300,6 +301,7 @@ debug_color = Color(0.651582, 0.519049, 0, 0.42)
 
 [node name="HitBoxKick" type="Area2D" parent="J4ck/Hitboxes"]
 script = ExtResource("11_0i4u0")
+damage_amount = 4
 metadata/_custom_type_script = "uid://cj1nlr0r785ml"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="J4ck/Hitboxes/HitBoxKick"]
