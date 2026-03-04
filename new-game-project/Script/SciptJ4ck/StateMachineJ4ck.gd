@@ -5,36 +5,27 @@ var states: Dictionary = {}
 
 func _ready() -> void:
 	print("StateMachine ready")
-
-	# Get reference to the root Node2D
 	var root = get_parent()
 	print("StateMachine parent (root): ", root.name, " (", root.get_class(), ")")
-	
-	# Find the CharacterBody2D - it should be a sibling or child of root
+
 	var steve = null
-	
-	# First, check if root is the CharacterBody2D
 	if root is CharacterBody2D:
 		steve = root
 	else:
-		# Otherwise, look for CharacterBody2D among root's children
 		for child in root.get_children():
 			if child is CharacterBody2D:
 				steve = child
 				break
-	
+
 	if not steve:
 		print("⚠️ ERROR: Could not find CharacterBody2D!")
 		return
-	
-	print("✅ Found CharacterBody2D: ", steve.name)
 
+	print("✅ Found CharacterBody2D: ", steve.name)
 	for child in get_children():
 		if child is State:
 			print("  Setting up state:", child.name, " for ", steve.name)
 			states[child.name] = child
-
-			# Set Steve reference for each state
 			child.Steve = steve
 			child.Transitioned.connect(on_child_transition)
 
@@ -52,18 +43,62 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if current_state:
 		current_state.Physics_Update(delta)
+	update_facing()
 
+func update_facing() -> void:
+	var root = get_parent()
+
+	var my_body: CharacterBody2D = null
+	if root is CharacterBody2D:
+		my_body = root
+	else:
+		for child in root.get_children():
+			if child is CharacterBody2D:
+				my_body = child
+				break
+
+	if not my_body:
+		return
+
+	var all_players = get_tree().get_nodes_in_group("players")
+	var opponent: CharacterBody2D = null
+	for player in all_players:
+		if player != my_body:
+			opponent = player
+			break
+
+	if not opponent:
+		return
+
+	var sprite = my_body.find_child("AnimatedSprite2D", true, false)
+	if not sprite:
+		return
+
+	var facing_left := opponent.global_position.x < my_body.global_position.x
+
+	if sprite.flip_h == facing_left:
+		return  # Nothing changed, skip
+
+	sprite.flip_h = facing_left
+
+	# Flip the pivot that contains all hitboxes and hurtbox
+	var pivot = my_body.find_child("Hitboxes", true, false)
+	if pivot:
+		pivot.scale.x = -1.0 if facing_left else 1.0
+	else:
+		print("⚠️ Hitboxes not found on ", my_body.name)
+		
 func on_child_transition(state, new_state_name: String) -> void:
 	if state != current_state:
 		return
-		
+
 	var new_state: State = states.get(new_state_name)
 	if !new_state:
 		print("⚠️ State not found:", new_state_name)
 		return
-	
+
 	if current_state:
 		current_state.exit()
-	
+
 	new_state.enter()
 	current_state = new_state

@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://c0m36g5wplhcc"]
+[gd_scene load_steps=41 format=3 uid="uid://c0m36g5wplhcc"]
 
 [ext_resource type="Script" uid="uid://d3nvijr0t0s66" path="res://Script/SciptJ4ck/damage_&_deathj4ck.gd" id="1_a0t0p"]
 [ext_resource type="Texture2D" uid="uid://dsr7hf1hgaf6p" path="res://Sprites/J4ck/jackanim.png" id="2_8unil"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://c0yfetlwjkdw1" path="res://Script/SciptJ4ck/StateMachineJ4ck.gd" id="7_gmptl"]
 [ext_resource type="Script" uid="uid://ci8sna3jllune" path="res://Script/SciptJ4ck/walkJ4ck.gd" id="8_0i4u0"]
 [ext_resource type="Script" uid="uid://d3tb0iuvmk87f" path="res://Script/SciptJ4ck/punch.gd" id="9_0i4u0"]
+[ext_resource type="Script" uid="uid://bylp38eh2rrvv" path="res://Script/SciptJ4ck/blockJ4ck.gd" id="9_1biw4"]
 [ext_resource type="Script" uid="uid://dmxfxr0cbqsy7" path="res://Script/SciptJ4ck/IdleStateJ4ck.gd" id="9_8unil"]
 [ext_resource type="Script" uid="uid://dtuesrbjnx851" path="res://Script/SciptJ4ck/jumpJ4ck.gd" id="10_1biw4"]
 [ext_resource type="Script" uid="uid://7qojpre8en2i" path="res://Script/SciptJ4ck/hit_box.gd" id="10_8unil"]
@@ -239,20 +240,6 @@ autoplay = "Idle"
 position = Vector2(-2, 0)
 shape = SubResource("CapsuleShape2D_gmptl")
 
-[node name="Pain" type="Node2D" parent="J4ck"]
-
-[node name="HurtBox" type="Area2D" parent="J4ck/Pain"]
-script = ExtResource("4_gmptl")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="J4ck/Pain/HurtBox"]
-position = Vector2(-20.25, 0.6875)
-shape = SubResource("RectangleShape2D_1biw4")
-debug_color = Color(0.94771, 4.23551e-06, 0.581792, 0.42)
-
-[node name="HealthComponent" type="Node2D" parent="J4ck/Pain"]
-visible = false
-script = ExtResource("6_6kfj8")
-
 [node name="State Machine" type="Node2D" parent="J4ck" node_paths=PackedStringArray("initial_state")]
 script = ExtResource("7_gmptl")
 initial_state = NodePath("idle")
@@ -283,20 +270,39 @@ anim = NodePath("../../AnimatedSprite2D")
 script = ExtResource("10_44bxf")
 Steve = NodePath("../..")
 
-[node name="HitBox" type="Area2D" parent="J4ck"]
+[node name="block" type="Node2D" parent="J4ck/State Machine"]
+script = ExtResource("9_1biw4")
+
+[node name="Hitboxes" type="Node2D" parent="J4ck"]
+
+[node name="Pain" type="Node2D" parent="J4ck/Hitboxes"]
+
+[node name="HurtBox" type="Area2D" parent="J4ck/Hitboxes/Pain"]
+script = ExtResource("4_gmptl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="J4ck/Hitboxes/Pain/HurtBox"]
+position = Vector2(-20.25, 0.6875)
+shape = SubResource("RectangleShape2D_1biw4")
+debug_color = Color(0.94771, 4.23551e-06, 0.581792, 0.42)
+
+[node name="HealthComponent" type="Node2D" parent="J4ck/Hitboxes/Pain"]
+visible = false
+script = ExtResource("6_6kfj8")
+
+[node name="HitBox" type="Area2D" parent="J4ck/Hitboxes"]
 script = ExtResource("10_8unil")
 metadata/_custom_type_script = "uid://8n0a8savo6e1"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="J4ck/HitBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="J4ck/Hitboxes/HitBox"]
 position = Vector2(31, -12)
 shape = SubResource("RectangleShape2D_44bxf")
 debug_color = Color(0.651582, 0.519049, 0, 0.42)
 
-[node name="HitBoxKick" type="Area2D" parent="J4ck"]
+[node name="HitBoxKick" type="Area2D" parent="J4ck/Hitboxes"]
 script = ExtResource("11_0i4u0")
 metadata/_custom_type_script = "uid://cj1nlr0r785ml"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="J4ck/HitBoxKick"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="J4ck/Hitboxes/HitBoxKick"]
 position = Vector2(18, 32)
 shape = SubResource("RectangleShape2D_44bxf")
 debug_color = Color(0.450234, 0.199004, 0, 0.42)

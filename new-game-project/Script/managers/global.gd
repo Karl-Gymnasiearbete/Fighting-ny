@@ -13,6 +13,7 @@ func setup_inputs():
 	remap_action("downp1", KEY_S)
 	remap_action("punchp1", KEY_E)  # Changed from I to E
 	remap_action("kickp1", KEY_C)   # Changed from M to C
+	remap_action("blockp1", KEY_Q)
 	
 	# Player 2 actions - FIXED: I and M for punch/kick
 	remap_action("leftp2", KEY_LEFT)
@@ -21,6 +22,7 @@ func setup_inputs():
 	remap_action("downp2", KEY_DOWN)
 	remap_action("punchp2", KEY_I)  # Changed from E to I
 	remap_action("kickp2", KEY_M)   # Changed from C to M
+	remap_action("blockp2", KEY_U)
 	
 	print("✅ Inputs configured:")
 	print("   Player 1 (", p1_character, ") - WASD + E/C")

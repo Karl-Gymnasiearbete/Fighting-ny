@@ -46,61 +46,59 @@ func detect_player_number() -> void:
 		
 func enter() -> void:
 	print("Entered walk - Player ", player_number)
-	if anim:
-		anim.play("walk")
+	pass
 
 func Physics_Update(delta: float) -> void:
 	if not Steve:
+		print("⚠️ Walk - Steve is null!")
 		return
-
-	var punch_state = get_parent().states.get("punch2")  # Match actual node name
-	var kick_state = get_parent().states.get("kick2")    # Match actual node name
-
-	if punch_state:
-		punch_state.update_cooldown(delta)
-	if kick_state:
-		kick_state.update_cooldown(delta)
-
+		
 	if player_number == 1:
 		var dir_x := Input.get_axis("leftp1", "rightp1")
 		Steve.velocity.x = dir_x * speed
-
+		anim.play("walk")
+		
+		# Update punch cooldown
+		var punch_state = get_parent().states.get("punch")
+		if punch_state:
+			punch_state.update_cooldown(delta)
+		
+		# Update kick cooldown
+		var kick_state = get_parent().states.get("kick")
+		if kick_state:
+			kick_state.update_cooldown(delta)
+		
+		# Punch input
 		if Input.is_action_just_pressed("punchp1"):
-			if punch_state and punch_state.can_punch():
-				Transitioned.emit(self, "punch2")
-				return
-		if Input.is_action_just_pressed("kickp1"):
-			if kick_state and kick_state.can_kick():
-				Transitioned.emit(self, "kick2")
-				return
-		if Input.is_action_just_pressed("jumpp1") and Steve.is_on_floor():
-			Transitioned.emit(self, "jump")
-			return
-		if not Steve.is_on_floor():
-			Steve.velocity.y += gravity * delta
-		Steve.move_and_slide()
-		if dir_x == 0:
-			Transitioned.emit(self, "idle")
-			return
-
-	elif player_number == 2:
-		var dir_x := Input.get_axis("leftp2", "rightp2")
-		Steve.velocity.x = dir_x * speed
-
-		if Input.is_action_just_pressed("punchp2"):
 			if punch_state and punch_state.can_punch():
 				Transitioned.emit(self, "punch")
 				return
-		if Input.is_action_just_pressed("kickp2"):
+			else:
+				print("Punch on cooldown!")
+		
+		# Kick input
+		if Input.is_action_just_pressed("kickp1"):
 			if kick_state and kick_state.can_kick():
 				Transitioned.emit(self, "kick")
 				return
-				if Input.is_action_just_pressed("jumpp2") and Steve.is_on_floor():
-					Transitioned.emit(self, "jump")
-					return
+			else:
+				print("Kick on cooldown!")
+		
+		# Jump input
+		if Input.is_action_just_pressed("jumpp1") and Steve.is_on_floor():
+			Transitioned.emit(self, "jump")
+			return
+		if Input.is_action_just_pressed("blockp1"):  # inside player_number == 1 block
+			Transitioned.emit(self, "block")
+			return
+		
+		# Gravity
 		if not Steve.is_on_floor():
 			Steve.velocity.y += gravity * delta
+		
 		Steve.move_and_slide()
+		
+		# Idle transition - check AFTER movement
 		if dir_x == 0:
 			Transitioned.emit(self, "idle")
 			return
@@ -108,20 +106,21 @@ func Physics_Update(delta: float) -> void:
 	elif player_number == 2:
 		var dir_x := Input.get_axis("leftp2", "rightp2")
 		Steve.velocity.x = dir_x * speed
+		anim.play("walk")
 		
 		# Update punch cooldown
-		var punchp2_state = get_parent().states.get("punchp2")
-		if punchp2_state:
-			punchp2_state.update_cooldown(delta)
+		var punch_state = get_parent().states.get("punch")
+		if punch_state:
+			punch_state.update_cooldown(delta)
 		
 		# Update kick cooldown
-		kick_state = get_parent().states.get("kick")
+		var kick_state = get_parent().states.get("kick")
 		if kick_state:
 			kick_state.update_cooldown(delta)
 		
 		# Punch input
 		if Input.is_action_just_pressed("punchp2"):
-			if punchp2_state and punchp2_state.can_punch():
+			if punch_state and punch_state.can_punch():
 				Transitioned.emit(self, "punch")
 				return
 			else:
@@ -138,6 +137,9 @@ func Physics_Update(delta: float) -> void:
 		# Jump input
 		if Input.is_action_just_pressed("jumpp2") and Steve.is_on_floor():
 			Transitioned.emit(self, "jump")
+			return
+		if Input.is_action_just_pressed("blockp2"):  # inside player_number == 2 block
+			Transitioned.emit(self, "block")
 			return
 		
 		# Gravity

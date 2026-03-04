@@ -88,6 +88,9 @@ func Physics_Update(delta: float) -> void:
 		if Input.is_action_just_pressed("jumpp1") and Steve.is_on_floor():
 			Transitioned.emit(self, "jump")
 			return
+		if Input.is_action_just_pressed("blockp1"):  # inside player_number == 1 block
+			Transitioned.emit(self, "block")
+			return
 		
 		# Gravity
 		if not Steve.is_on_floor():
@@ -134,6 +137,9 @@ func Physics_Update(delta: float) -> void:
 		# Jump input
 		if Input.is_action_just_pressed("jumpp2") and Steve.is_on_floor():
 			Transitioned.emit(self, "jump")
+			return
+		if Input.is_action_just_pressed("blockp2"):  # inside player_number == 2 block
+			Transitioned.emit(self, "block")
 			return
 		
 		# Gravity

@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var max_health := 10
+@export var max_health := 20
 var health: int
 var healthbar: TextureProgressBar
 var player_number: int = 0
