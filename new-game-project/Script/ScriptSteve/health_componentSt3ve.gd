@@ -48,12 +48,11 @@ func update_healthbar() -> void:
 	if healthbar:
 		healthbar.value = health
 
-func damage(attack_damage: int, attack_type: String = "unknown") -> void:
+func damage(attack_damage: int, 
+	attack_type: String = "unknown") -> void:
 	health -= attack_damage
 	health = max(health, 0)
 	update_healthbar()
-	
-	print(get_parent().get_parent().name, " took ", attack_damage, " ", attack_type, " damage! Health: ", health, "/", max_health)
 	
 	if health <= 0:
 		die()

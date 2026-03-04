@@ -56,7 +56,7 @@ func Physics_Update(delta: float) -> void:
 	if player_number == 1:
 		var dir_x := Input.get_axis("leftp1", "rightp1")
 		Steve.velocity.x = dir_x * speed
-		anim.play("walk")
+		#anim.play("walk")
 		
 		# Update punch cooldown
 		var punch_state = get_parent().states.get("punch")
