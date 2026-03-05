@@ -3,8 +3,30 @@ extends Node
 # Define spawn positions directly if you don't have spawn point nodes
 var p1_spawn_pos = Vector2(400, 300)  # Adjust these coordinates to fit your arena
 var p2_spawn_pos = Vector2(600, 300)  # Adjust these coordinates to fit your arena
+# At the top, add a reference to the win screen
+@onready var win_screen = $WinScreen
+@onready var win_label = $WinScreen/WinLabel
+@onready var retry_button = $WinScreen/RetryButton
+@onready var quit_button = $WinScreen/QuitButton
 
+
+
+func show_win_screen(winning_player: int):
+	win_label.text = "Player " + str(winning_player) + " Wins!"
+	win_screen.visible = true
+	get_tree().paused = true  # freeze the game
+
+func _on_retry_pressed():
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://Scener/HUb/mainMenu.tscn")
+
+func _on_quit_pressed():
+	get_tree().quit()
+	
 func _ready():
+	win_screen.visible = false
+	retry_button.pressed.connect(_on_retry_pressed)
+	quit_button.pressed.connect(_on_quit_pressed)
 	# Try to find spawn points in the scene first
 	var p1_spawn = get_node_or_null("P1SpawnPoint")
 	var p2_spawn = get_node_or_null("P2SpawnPoint")

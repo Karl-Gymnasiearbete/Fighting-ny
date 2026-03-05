@@ -27,8 +27,12 @@ func _on_area_entered(area: Area2D) -> void:
 
 	hit_cooldown = cooldown_duration
 
+	# Layout: HurtBox -> Pain -> Hitboxes (Node2D) -> CharacterBody2D
 	var pain = get_parent()
-	var character_body = pain.get_parent()
+	var hitboxes = pain.get_parent()
+	var character_body = hitboxes.get_parent()
+
+	print("Character body: ", character_body.name, " (", character_body.get_class(), ")")
 
 	if character_body.has_meta("is_blocking") and character_body.get_meta("is_blocking"):
 		var reduction = character_body.get_meta("damage_reduction")
@@ -42,6 +46,7 @@ func _on_area_entered(area: Area2D) -> void:
 	take_damage(damage, attack_type)
 
 func take_damage(amount: int, attack_type: String) -> void:
+	# HealthComponent is a sibling of HurtBox inside Pain
 	var health_component = get_parent().find_child("HealthComponent", true, false)
 
 	if health_component and health_component.has_method("damage"):

@@ -74,25 +74,20 @@ func update_facing() -> void:
 	if not sprite:
 		return
 
-	var facing_left: bool
-	if opponent.global_position.x < my_body.global_position.x:
-		facing_left = true
-	else:
-		facing_left = false
+	var facing_left := opponent.global_position.x < my_body.global_position.x
 
-	# Only update if facing changed to avoid unnecessary work
 	if sprite.flip_h == facing_left:
-		return
+		return  # Nothing changed, skip
 
 	sprite.flip_h = facing_left
 
-	# Flip all hitboxes by mirroring their X position
-	var hitboxes = ["HitBox", "HitBoxKick", "HitBoxJack", "HitBoxKickSteve", "HitBoxSteve"]
-	for hitbox_name in hitboxes:
-		var hitbox = my_body.find_child(hitbox_name, true, false)
-		if hitbox:
-			hitbox.position.x = -hitbox.position.x
-			
+	# Flip the pivot that contains all hitboxes and hurtbox
+	var pivot = my_body.find_child("Hitboxes", true, false)
+	if pivot:
+		pivot.scale.x = -1.0 if facing_left else 1.0
+	else:
+		print("⚠️ Hitboxes not found on ", my_body.name)
+		
 func on_child_transition(state, new_state_name: String) -> void:
 	if state != current_state:
 		return

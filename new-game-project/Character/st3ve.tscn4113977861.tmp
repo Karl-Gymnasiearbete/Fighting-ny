@@ -34,6 +34,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("1_45yjn")
+}, {
+"duration": 1.0,
+"texture": null
 }],
 "loop": true,
 "name": &"Idle",
@@ -72,7 +75,7 @@ shape = SubResource("CapsuleShape2D_fsb3l")
 script = ExtResource("4_ojsrk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="St3ve/Hitboxes/Pain/HurtBox2"]
-position = Vector2(34, -1)
+position = Vector2(-24, 1)
 shape = SubResource("RectangleShape2D_k00dq")
 debug_color = Color(0.959499, 1.15514e-06, 0.521285, 0.42)
 
@@ -103,15 +106,13 @@ debug_color = Color(0.262955, 0.131244, 7.21961e-08, 0.42)
 script = ExtResource("2_jx7ui")
 initial_state = NodePath("idle")
 
-[node name="idle" type="Node2D" parent="St3ve/StateMachine" node_paths=PackedStringArray("Steve", "anim")]
+[node name="idle" type="Node2D" parent="St3ve/StateMachine" node_paths=PackedStringArray("Steve")]
 script = ExtResource("3_g5n58")
 Steve = NodePath("../..")
-anim = NodePath("../../AnimatedSprite2D")
 
-[node name="walk" type="Node2D" parent="St3ve/StateMachine" node_paths=PackedStringArray("Steve", "anim")]
+[node name="walk" type="Node2D" parent="St3ve/StateMachine" node_paths=PackedStringArray("Steve")]
 script = ExtResource("4_g5n58")
 Steve = NodePath("../..")
-anim = NodePath("../../AnimatedSprite2D")
 speed = 300
 
 [node name="jump" type="Node2D" parent="St3ve/StateMachine" node_paths=PackedStringArray("Steve")]
@@ -119,16 +120,13 @@ script = ExtResource("5_fsb3l")
 Steve = NodePath("../..")
 jump_force = 600
 
-[node name="punch2" type="Node2D" parent="St3ve/StateMachine" node_paths=PackedStringArray("Steve", "anim")]
+[node name="punch2" type="Node2D" parent="St3ve/StateMachine" node_paths=PackedStringArray("Steve")]
 script = ExtResource("9_uplm4")
 Steve = NodePath("../..")
-anim = NodePath("../../AnimatedSprite2D")
 
-[node name="kick2" type="Node2D" parent="St3ve/StateMachine" node_paths=PackedStringArray("Steve", "anim")]
+[node name="kick2" type="Node2D" parent="St3ve/StateMachine" node_paths=PackedStringArray("Steve")]
 script = ExtResource("10_k00dq")
 Steve = NodePath("../..")
-anim = NodePath("../../AnimatedSprite2D")
 
-[node name="block2" type="Node2D" parent="St3ve/StateMachine" node_paths=PackedStringArray("anim")]
+[node name="block2" type="Node2D" parent="St3ve/StateMachine"]
 script = ExtResource("11_k00dq")
-anim = NodePath("../../AnimatedSprite2D")

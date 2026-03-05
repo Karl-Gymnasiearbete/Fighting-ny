@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://cuojwadspstlr"]
+[gd_scene load_steps=11 format=4 uid="uid://cuojwadspstlr"]
 
 [ext_resource type="Script" uid="uid://ch3odhxojpnfj" path="res://Script/managers/main.gd" id="1_bi5fm"]
 [ext_resource type="Texture2D" uid="uid://duxahvnefx77h" path="res://Sprites/Temporary/1588959089_7c0fc2509ae02f26b34709c8e64617076cfdaba8eaeffadaad33cb5c1fb24b4d.jpg" id="1_q4r3q"]
@@ -343,8 +343,6 @@ sources/1 = SubResource("TileSetAtlasSource_2ewoc")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pavvm"]
 size = Vector2(1005, 62)
 
-[sub_resource type="LabelSettings" id="LabelSettings_04jt5"]
-
 [node name="Level" type="Node2D"]
 position = Vector2(-206, -114)
 script = ExtResource("1_bi5fm")
@@ -411,35 +409,3 @@ value = 100.0
 texture_under = ExtResource("6_04jt5")
 texture_progress = ExtResource("7_3a8um")
 script = ExtResource("5_6d7dc")
-
-[node name="WinScreen" type="CanvasLayer" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="WinScreen"]
-offset_left = 1.0
-offset_top = -2.0
-offset_right = 1368.0
-offset_bottom = 719.0
-color = Color(0, 0, 0, 0.588235)
-
-[node name="WinLabel" type="Label" parent="WinScreen"]
-offset_left = 551.0
-offset_top = 158.0
-offset_right = 837.0
-offset_bottom = 330.0
-theme_override_font_sizes/font_size = 1
-text = "win"
-label_settings = SubResource("LabelSettings_04jt5")
-
-[node name="RetryButton" type="Button" parent="WinScreen"]
-offset_left = 114.0
-offset_top = 507.0
-offset_right = 246.0
-offset_bottom = 538.0
-text = "Return to menu"
-
-[node name="QuitButton" type="Button" parent="WinScreen"]
-offset_left = 775.0
-offset_top = 489.0
-offset_right = 907.0
-offset_bottom = 520.0
-text = "Quit"
