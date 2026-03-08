@@ -47,7 +47,6 @@ func _physics_process(delta: float) -> void:
 
 func update_facing() -> void:
 	var root = get_parent()
-
 	var my_body: CharacterBody2D = null
 	if root is CharacterBody2D:
 		my_body = root
@@ -56,7 +55,6 @@ func update_facing() -> void:
 			if child is CharacterBody2D:
 				my_body = child
 				break
-
 	if not my_body:
 		return
 
@@ -66,27 +64,29 @@ func update_facing() -> void:
 		if player != my_body:
 			opponent = player
 			break
-
 	if not opponent:
 		return
 
-	var sprite = my_body.find_child("AnimatedSprite2D", true, false)
-	if not sprite:
+	var diff = opponent.global_position.x - my_body.global_position.x
+	if abs(diff) < 10:
 		return
 
-	var facing_left := opponent.global_position.x < my_body.global_position.x
+	var face_right = diff > 0
 
-	if sprite.flip_h == facing_left:
-		return  # Nothing changed, skip
+	# Flip sprite visually
+	var sprite = my_body.find_child("AnimatedSprite2D", true, false)
+	if sprite:
+		if face_right:
+			sprite.flip_h = false
+			sprite.position.x = abs(sprite.position.x)  # positive offset
+		else:
+			sprite.flip_h = true
+			sprite.position.x = -abs(sprite.position.x)  # negative offset
 
-	sprite.flip_h = facing_left
-
-	# Flip the pivot that contains all hitboxes and hurtbox
-	var pivot = my_body.find_child("Hitboxes", true, false)
-	if pivot:
-		pivot.scale.x = -1.0 if facing_left else 1.0
-	else:
-		print("⚠️ Hitboxes not found on ", my_body.name)
+		# Flip hitboxes to match
+	var hitboxes = my_body.find_child("Hitboxes", true, false)
+	if hitboxes:
+		hitboxes.scale.x = 1 if face_right else -1
 		
 func on_child_transition(state, new_state_name: String) -> void:
 	if state != current_state:

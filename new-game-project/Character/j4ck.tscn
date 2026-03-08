@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://c0m36g5wplhcc"]
+[gd_scene load_steps=42 format=3 uid="uid://c0m36g5wplhcc"]
 
 [ext_resource type="Script" uid="uid://d3nvijr0t0s66" path="res://Script/SciptJ4ck/damage_&_deathj4ck.gd" id="1_a0t0p"]
 [ext_resource type="Texture2D" uid="uid://dsr7hf1hgaf6p" path="res://Sprites/J4ck/jackanim.png" id="2_8unil"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://dtuesrbjnx851" path="res://Script/SciptJ4ck/jumpJ4ck.gd" id="10_1biw4"]
 [ext_resource type="Script" uid="uid://7qojpre8en2i" path="res://Script/SciptJ4ck/hit_box.gd" id="10_8unil"]
 [ext_resource type="Script" uid="uid://vytvwbyod0nx" path="res://Script/SciptJ4ck/kick.gd" id="10_44bxf"]
+[ext_resource type="Script" uid="uid://cxgf5dk143eay" path="res://Script/SciptJ4ck/crouchJ4ck.gd" id="10_nkale"]
 [ext_resource type="Script" uid="uid://cj1nlr0r785ml" path="res://Script/SciptJ4ck/hit_box_kick.gd" id="11_0i4u0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1biw4"]
@@ -233,7 +234,7 @@ script = ExtResource("1_a0t0p")
 texture_filter = 1
 position = Vector2(9, 0)
 sprite_frames = SubResource("SpriteFrames_5rtto")
-animation = &"Idle"
+animation = &"dmg_taken_stand"
 autoplay = "Idle"
 
 [node name="Collision" type="CollisionShape2D" parent="J4ck"]
@@ -266,12 +267,18 @@ Steve = NodePath("../..")
 punch_cooldown = 0.25
 anim = NodePath("../../AnimatedSprite2D")
 
-[node name="kick" type="Node2D" parent="J4ck/State Machine" node_paths=PackedStringArray("Steve")]
+[node name="kick" type="Node2D" parent="J4ck/State Machine" node_paths=PackedStringArray("Steve", "anim")]
 script = ExtResource("10_44bxf")
 Steve = NodePath("../..")
+anim = NodePath("../../AnimatedSprite2D")
 
-[node name="block" type="Node2D" parent="J4ck/State Machine"]
+[node name="block" type="Node2D" parent="J4ck/State Machine" node_paths=PackedStringArray("anim")]
 script = ExtResource("9_1biw4")
+anim = NodePath("../../AnimatedSprite2D")
+
+[node name="crouch" type="Node2D" parent="J4ck/State Machine" node_paths=PackedStringArray("anim")]
+script = ExtResource("10_nkale")
+anim = NodePath("../../AnimatedSprite2D")
 
 [node name="Hitboxes" type="Node2D" parent="J4ck"]
 

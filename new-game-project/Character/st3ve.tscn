@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://6et3xlv6y4mp"]
+[gd_scene load_steps=19 format=3 uid="uid://6et3xlv6y4mp"]
 
 [ext_resource type="Texture2D" uid="uid://dnqa5iuw51jme" path="res://Sprites/steve/steve.png" id="1_45yjn"]
 [ext_resource type="Script" uid="uid://cla57k3yghlt" path="res://Script/ScriptSteve/damage_&_deathSt3ve.gd" id="1_60an2"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://cj4ltvfnie1on" path="res://Script/ScriptSteve/kick2.gd" id="10_k00dq"]
 [ext_resource type="Script" uid="uid://c1n3qx6u3maao" path="res://Script/ScriptSteve/blockSt3ve.gd" id="11_k00dq"]
 [ext_resource type="Script" uid="uid://b1q2iymfhfyjn" path="res://Script/ScriptSteve/hit_box_kickSt3ve.gd" id="12_bw04x"]
+[ext_resource type="Script" uid="uid://cdumlqm068tid" path="res://Script/ScriptSteve/crouchSt3ve.gd" id="14_bw04x"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_k00dq"]
 animations = [{
@@ -132,3 +133,6 @@ anim = NodePath("../../AnimatedSprite2D")
 [node name="block2" type="Node2D" parent="St3ve/StateMachine" node_paths=PackedStringArray("anim")]
 script = ExtResource("11_k00dq")
 anim = NodePath("../../AnimatedSprite2D")
+
+[node name="crouch2" type="Node2D" parent="St3ve/StateMachine"]
+script = ExtResource("14_bw04x")

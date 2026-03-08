@@ -10,16 +10,17 @@ func setup_inputs():
 	remap_action("leftp1", KEY_A)
 	remap_action("rightp1", KEY_D)
 	remap_action("jumpp1", KEY_W)
-	remap_action("downp1", KEY_S)
+	remap_action("crouchp1", KEY_S)
 	remap_action("punchp1", KEY_E)  # Changed from I to E
 	remap_action("kickp1", KEY_C)   # Changed from M to C
 	remap_action("blockp1", KEY_Q)
+
 	
 	# Player 2 actions - FIXED: I and M for punch/kick
 	remap_action("leftp2", KEY_LEFT)
 	remap_action("rightp2", KEY_RIGHT)
 	remap_action("jumpp2", KEY_UP)
-	remap_action("downp2", KEY_DOWN)
+	remap_action("crouchp2", KEY_DOWN)
 	remap_action("punchp2", KEY_I)  # Changed from E to I
 	remap_action("kickp2", KEY_M)   # Changed from C to M
 	remap_action("blockp2", KEY_U)
