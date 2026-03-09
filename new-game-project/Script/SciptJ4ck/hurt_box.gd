@@ -1,6 +1,7 @@
 class_name HurtBox
 extends Area2D
 
+@export var anim: AnimatedSprite2D
 var hit_cooldown := 0.0
 var cooldown_duration := 0.2
 
