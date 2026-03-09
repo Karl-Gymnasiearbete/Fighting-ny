@@ -360,20 +360,23 @@ script = ExtResource("10_44bxf")
 Steve = NodePath("../..")
 anim = NodePath("../../AnimatedSprite2D")
 
-[node name="block" type="Node2D" parent="J4ck/State Machine" node_paths=PackedStringArray("anim")]
+[node name="block" type="Node2D" parent="J4ck/State Machine" node_paths=PackedStringArray("Steve", "anim")]
 script = ExtResource("9_1biw4")
+Steve = NodePath("../..")
 anim = NodePath("../../AnimatedSprite2D")
 
-[node name="crouch" type="Node2D" parent="J4ck/State Machine" node_paths=PackedStringArray("anim")]
+[node name="crouch" type="Node2D" parent="J4ck/State Machine" node_paths=PackedStringArray("Steve", "anim")]
 script = ExtResource("10_nkale")
+Steve = NodePath("../..")
 anim = NodePath("../../AnimatedSprite2D")
 
 [node name="Hitboxes" type="Node2D" parent="J4ck"]
 
 [node name="Pain" type="Node2D" parent="J4ck/Hitboxes"]
 
-[node name="HurtBox" type="Area2D" parent="J4ck/Hitboxes/Pain"]
+[node name="HurtBox" type="Area2D" parent="J4ck/Hitboxes/Pain" node_paths=PackedStringArray("anim")]
 script = ExtResource("4_gmptl")
+anim = NodePath("../../../AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="J4ck/Hitboxes/Pain/HurtBox"]
 position = Vector2(34, 19)
