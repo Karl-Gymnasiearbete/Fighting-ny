@@ -62,13 +62,13 @@ func Physics_Update(delta: float) -> void:
 	if player_number == 1:
 		dir_x = Input.get_axis("leftp1", "rightp1")
 		if Input.is_action_just_pressed("blockp1"):
-			Transitioned.emit(self, "block2")
+			Transitioned.emit(self, "block")
 			return
 		if Input.is_action_just_pressed("punchp1"):
-			Transitioned.emit(self, "punch2")
+			Transitioned.emit(self, "punch")
 			return
 		if Input.is_action_just_pressed("kickp1"):
-			Transitioned.emit(self, "kick2")
+			Transitioned.emit(self, "kick")
 			return
 		if Input.is_action_just_pressed("jumpp1") and Steve.is_on_floor():
 			Transitioned.emit(self, "jump")
@@ -79,13 +79,13 @@ func Physics_Update(delta: float) -> void:
 	elif player_number == 2:
 		dir_x = Input.get_axis("leftp2", "rightp2")
 		if Input.is_action_just_pressed("blockp2"):
-			Transitioned.emit(self, "block2")
+			Transitioned.emit(self, "block")
 			return
 		if Input.is_action_just_pressed("punchp2"):
-			Transitioned.emit(self, "punch2")
+			Transitioned.emit(self, "punch")
 			return
 		if Input.is_action_just_pressed("kickp2"):
-			Transitioned.emit(self, "kick2")
+			Transitioned.emit(self, "kick")
 			return
 		if Input.is_action_just_pressed("jumpp2") and Steve.is_on_floor():
 			Transitioned.emit(self, "jump")

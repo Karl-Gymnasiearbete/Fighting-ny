@@ -73,7 +73,7 @@ func Physics_Update(delta: float) -> void:
 			Transitioned.emit(self, "jump")
 			return
 		if Input.is_action_pressed("crouchp1"):
-			Transitioned.emit(self, "crouch")
+			Transitioned.emit(self, "crouch2")
 			return
 	elif player_number == 2:
 		dir_x = Input.get_axis("leftp2", "rightp2")
@@ -90,7 +90,7 @@ func Physics_Update(delta: float) -> void:
 			Transitioned.emit(self, "jump")
 			return
 		if Input.is_action_pressed("crouchp2"):
-			Transitioned.emit(self, "crouch")
+			Transitioned.emit(self, "crouch2")
 			return
 
 	if dir_x != 0:

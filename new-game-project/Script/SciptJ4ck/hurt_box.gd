@@ -18,32 +18,32 @@ func _on_area_entered(area: Area2D) -> void:
 	if hit_cooldown > 0:
 		return
 
+	# Get this hurtbox's player number
+	var pain = get_parent()
+	var hitboxes = pain.get_parent()
+	var my_character = hitboxes.get_parent()
+
+	# Get the attacker's player number
+	var attacker_character = area.get_parent().get_parent()  # HitBox -> Hitboxes -> CharacterBody2D
+	
+	# If same character, ignore the hit
+	if my_character == attacker_character:
+		return
+
+	# rest of your existing code...
 	var damage = 1
 	var attack_type = "unknown"
-
 	if "damage_amount" in area:
 		damage = area.damage_amount
 	if "attack_type" in area:
 		attack_type = area.attack_type
-
 	hit_cooldown = cooldown_duration
-
-	# Layout: HurtBox -> Pain -> Hitboxes (Node2D) -> CharacterBody2D
-	var pain = get_parent()
-	var hitboxes = pain.get_parent()
-	var character_body = hitboxes.get_parent()
-
-	print("Character body: ", character_body.name, " (", character_body.get_class(), ")")
-
-	if character_body.has_meta("is_blocking") and character_body.get_meta("is_blocking"):
-		var reduction = character_body.get_meta("damage_reduction")
+	if my_character.has_meta("is_blocking") and my_character.get_meta("is_blocking"):
+		var reduction = my_character.get_meta("damage_reduction")
 		var reduced_damage = int(damage * reduction)
-		print("🛡️ Block reduced damage to: ", reduced_damage)
 		if reduced_damage <= 0:
-			print("🛡️ Attack fully blocked!")
 			return
 		damage = reduced_damage
-
 	take_damage(damage, attack_type)
 
 func take_damage(amount: int, attack_type: String) -> void:

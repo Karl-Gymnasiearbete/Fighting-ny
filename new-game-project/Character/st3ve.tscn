@@ -74,7 +74,7 @@ shape = SubResource("CapsuleShape2D_fsb3l")
 script = ExtResource("4_ojsrk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="St3ve/Hitboxes/Pain/HurtBox2"]
-position = Vector2(34, -1)
+position = Vector2(11, 0)
 shape = SubResource("RectangleShape2D_k00dq")
 debug_color = Color(0.959499, 1.15514e-06, 0.521285, 0.42)
 

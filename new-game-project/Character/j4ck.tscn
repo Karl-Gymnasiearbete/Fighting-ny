@@ -306,7 +306,7 @@ radius = 21.0
 height = 80.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1biw4"]
-size = Vector2(17.5, 33.3125)
+size = Vector2(17.5, 79.6563)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_44bxf"]
 size = Vector2(10, 9)
@@ -379,7 +379,7 @@ script = ExtResource("4_gmptl")
 anim = NodePath("../../../AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="J4ck/Hitboxes/Pain/HurtBox"]
-position = Vector2(34, 19)
+position = Vector2(16, -0.171875)
 shape = SubResource("RectangleShape2D_1biw4")
 debug_color = Color(0.94771, 4.23551e-06, 0.581792, 0.42)
 

@@ -48,32 +48,26 @@ func exit() -> void:
 func Physics_Update(delta: float) -> void:
 	if not Steve:
 		return
-
-	# Apply gravity
 	if not Steve.is_on_floor():
 		Steve.velocity.y += gravity * delta
 	Steve.velocity.x = 0
 	Steve.move_and_slide()
-
 	var crouch_held = false
-
 	if player_number == 1:
 		crouch_held = Input.is_action_pressed("crouchp1")
 		if Input.is_action_just_pressed("punchp1"):
-			Transitioned.emit(self, "punch")
+			Transitioned.emit(self, "punch2")
 			return
 		if Input.is_action_just_pressed("kickp1"):
-			Transitioned.emit(self, "kick")
+			Transitioned.emit(self, "kick2")
 			return
 	elif player_number == 2:
 		crouch_held = Input.is_action_pressed("crouchp2")
 		if Input.is_action_just_pressed("punchp2"):
-			Transitioned.emit(self, "punch")
+			Transitioned.emit(self, "punch2")
 			return
 		if Input.is_action_just_pressed("kickp2"):
-			Transitioned.emit(self, "kick")
+			Transitioned.emit(self, "kick2")
 			return
-
-	# Return to idle when crouch button released
 	if not crouch_held:
 		Transitioned.emit(self, "idle")

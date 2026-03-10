@@ -413,6 +413,7 @@ texture_progress = ExtResource("7_3a8um")
 script = ExtResource("5_6d7dc")
 
 [node name="WinScreen" type="CanvasLayer" parent="."]
+process_mode = 3
 
 [node name="ColorRect" type="ColorRect" parent="WinScreen"]
 offset_left = 1.0

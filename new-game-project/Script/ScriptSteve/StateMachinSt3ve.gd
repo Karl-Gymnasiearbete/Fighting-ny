@@ -86,7 +86,12 @@ func update_facing() -> void:
 		# Flip hitboxes to match
 	var hitboxes = my_body.find_child("Hitboxes", true, false)
 	if hitboxes:
-		hitboxes.scale.x = 1 if face_right else -1
+		if face_right:
+			hitboxes.scale.x = 1
+			hitboxes.position.x = 0
+		else:
+			hitboxes.scale.x = -1
+			hitboxes.position.x = -5
 		
 func on_child_transition(state, new_state_name: String) -> void:
 	if state != current_state:
