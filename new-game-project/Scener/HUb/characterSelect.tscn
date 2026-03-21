@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dl8decfml41wh"]
 
-[ext_resource type="Texture2D" uid="uid://b181scq6csym" path="res://Scener/cat being eaten by fish.jpg" id="1_70gr8"]
 [ext_resource type="Script" uid="uid://brj06qc6wvrp5" path="res://Script/managers/character_select.gd" id="1_vn1yo"]
+[ext_resource type="Texture2D" uid="uid://dr7bxoj8ysf8h" path="res://Sprites/Backgrounds/Main Menu.png" id="2_k3jql"]
 [ext_resource type="Texture2D" uid="uid://brdpaip73i8s7" path="res://Sprites/ui/iconsgymn.png" id="2_vn1yo"]
 
 [node name="CharacterSelect" type="Node"]
@@ -19,7 +19,7 @@ offset_right = 576.0
 offset_bottom = 326.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_70gr8")
+texture = ExtResource("2_k3jql")
 
 [node name="J4ck" type="Button" parent="."]
 anchors_preset = 8
