@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://4twn3fmspgq4"]
 
-[ext_resource type="Texture2D" uid="uid://big58xxpaykqu" path="res://Sprites/ui/ui-healtbar.png" id="1_6habc"]
+[ext_resource type="Texture2D" uid="uid://ck1rtpndxcees" path="res://Sprites/ui/ui-healtbar.png" id="1_6habc"]
 
 [node name="Node" type="Node"]
 
